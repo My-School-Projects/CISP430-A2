@@ -14,11 +14,11 @@ package com.mdorst.container.list;
  * # node : Node
  *
  * # insert(Integer)
- * # pushFront()
- * # pushBack()
+ * # pushFront(T)
+ * # pushBack(T)
  * # delete(Integer)
- * # popFront()
- * # popBack()
+ * # popFront() : T
+ * # popBack() : T
  * # sort(Predicate)
  * # iterate(Processor)
  * # search(T, Predicate) : Boolean
