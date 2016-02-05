@@ -14,7 +14,7 @@ package com.mdorst.container.list;
  * # front : Node
  * # back : Node
  *
- * # insert(Integer)
+ * # insert(Node, Integer)
  * # pushFront(T)
  * # pushBack(T)
  * # delete(Integer)
@@ -30,15 +30,15 @@ package com.mdorst.container.list;
 class ListBase<T> {
     protected Node<T> front;
 
-    protected void insert(int index) {
-        Node<T> n = front;
+    protected void insert(Node<T> newNode, int index) {
+        Node<T> node = front;
         for (int i = 0; i < index; i++) {
-            if (n != null) {
-                n = n.next;
+            if (node != null) {
+                node = node.next;
             } else {
                 throw new IndexOutOfBoundsException();
             }
-
+            Node.insertNext(node, newNode);
         }
     }
 
