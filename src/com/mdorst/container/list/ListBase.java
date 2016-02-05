@@ -13,7 +13,9 @@ package com.mdorst.container.list;
  * ListBase
  * # front : Node
  * # back : Node
+ * # size : Integer
  *
+ * + size() : Integer
  * # insert(Node, Integer)
  * # pushFront(T)
  * # pushBack(T)
@@ -29,6 +31,7 @@ package com.mdorst.container.list;
 
 class ListBase<T> {
     protected Node<T> front;
+    protected int size;
 
     protected void insert(Node<T> newNode, int index) {
         Node<T> node = front;
@@ -40,6 +43,7 @@ class ListBase<T> {
             }
             Node.insertNext(node, newNode);
         }
+        size++;
     }
 
     protected void pushFront(T obj) {
@@ -51,5 +55,14 @@ class ListBase<T> {
 
     protected void delete(int index) {
 
+    }
+
+    public int size() {
+        return size;
+    }
+    
+    public ListBase() {
+        front = new Node<>();
+        size = 0;
     }
 }
