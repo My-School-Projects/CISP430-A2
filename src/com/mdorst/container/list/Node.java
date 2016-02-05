@@ -53,7 +53,7 @@ class Node<T> {
     }
 
     public static <T> void delete(Node<T> node) {
-        if (node == null || node.next == null) {
+        if (node == null) {
             throw new NullPointerException();
         }
         if (node.prev != null) {
