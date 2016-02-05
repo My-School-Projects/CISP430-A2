@@ -15,6 +15,7 @@ package com.mdorst.container.list;
  * + constructor(T)
  *
  * <<static>> + insertNext(Node, Node)
+ * <<static>> + insertPrev(Node, Node)
  * <<static>> + delete(Node)
  * <<static>> + swapNext(Node)
  */
@@ -35,9 +36,20 @@ class Node<T> {
         }
         Node<T> temp = node.next;
         node.next = newNode;
+        newNode.next = temp;
         temp.prev = newNode;
         newNode.prev = node;
-        newNode.next = temp;
+    }
+
+    public static <T> void insertPrev(Node<T> node, Node<T> newNode) {
+        if (node == null || newNode == null) {
+            throw new NullPointerException();
+        }
+        Node<T> temp = node.prev;
+        node.prev = newNode;
+        newNode.prev = temp;
+        temp.next = newNode;
+        newNode.next = node;
     }
 
     public static <T> void delete(Node<T> node) {
