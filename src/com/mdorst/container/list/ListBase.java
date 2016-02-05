@@ -35,12 +35,11 @@ class ListBase<T> {
 
     protected void insert(Node<T> newNode, int index) {
         Node<T> node = front;
+        if (index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
         for (int i = 0; i < index; i++) {
-            if (node != null) {
-                node = node.next;
-            } else {
-                throw new IndexOutOfBoundsException();
-            }
+            node = node.next;
         }
         Node.insertNext(node, newNode);
         size++;
