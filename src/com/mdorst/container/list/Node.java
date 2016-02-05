@@ -37,7 +37,10 @@ class Node<T> {
             throw new NullPointerException();
         }
         node.prev.next = node.next;
+        node.next.prev = node.prev;
         node.next.next.prev = node;
-        // TODO: finish
+        node.next = node.next.next;
+        node.prev.next.next = node;
+        node.prev = node.prev.next;
     }
 }
