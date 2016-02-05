@@ -50,6 +50,18 @@ class ListBase<T> {
         Node.delete(getNode(index));
     }
 
+    protected T popFront() {
+        Node<T> node = getNode(0);
+        Node.delete(node);
+        return node.data;
+    }
+
+    protected T popBack() {
+        Node<T> node = getNode(size()-1);
+        Node.delete(node);
+        return node.data;
+    }
+
     public int size() {
         return size;
     }
