@@ -60,7 +60,7 @@ class ListBase<T> {
     }
 
     private Node<T> getNode(int index) {
-        if (index >= size()) {
+        if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Node<T> node = front;
