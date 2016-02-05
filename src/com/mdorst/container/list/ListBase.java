@@ -54,11 +54,6 @@ class ListBase<T> {
         return size;
     }
 
-    public ListBase() {
-        front = new Node<>();
-        size = 0;
-    }
-
     private Node<T> getNode(int index) {
         if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
