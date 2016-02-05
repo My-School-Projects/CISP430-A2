@@ -47,10 +47,10 @@ class ListBase<T> {
     }
 
     protected void pushFront(T obj) {
-
+        insert(new Node<>(obj), 0);
     }
     protected void pushBack(T obj) {
-
+        insert(new Node<>(obj), size()-1);
     }
 
     protected void delete(int index) {
@@ -60,7 +60,7 @@ class ListBase<T> {
     public int size() {
         return size;
     }
-    
+
     public ListBase() {
         front = new Node<>();
         size = 0;
