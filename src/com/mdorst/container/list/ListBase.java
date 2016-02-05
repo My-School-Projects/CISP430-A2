@@ -47,7 +47,7 @@ class ListBase<T> {
     }
 
     protected void delete(int index) {
-
+        Node.delete(getNode(index));
     }
 
     public int size() {
