@@ -41,8 +41,8 @@ class ListBase<T> {
             } else {
                 throw new IndexOutOfBoundsException();
             }
-            Node.insertNext(node, newNode);
         }
+        Node.insertNext(node, newNode);
         size++;
     }
 
