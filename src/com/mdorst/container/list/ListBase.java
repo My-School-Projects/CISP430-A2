@@ -33,6 +33,10 @@ package com.mdorst.container.list;
 class ListBase<T> {
     protected Node<T> front;
     protected int size;
+    
+    public int size() {
+        return size;
+    }
 
     protected void insert(Node<T> newNode, int index) {
         Node.insertNext(getNode(index), newNode);
@@ -65,10 +69,6 @@ class ListBase<T> {
         Node<T> node = getNode(size()-1);
         Node.delete(node);
         return node.data;
-    }
-
-    public int size() {
-        return size;
     }
 
     private Node<T> getNode(int index) {
