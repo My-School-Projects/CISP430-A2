@@ -37,8 +37,10 @@ class Node<T> {
         Node<T> temp = node.next;
         node.next = newNode;
         newNode.next = temp;
-        temp.prev = newNode;
         newNode.prev = node;
+        if (temp != null) {
+            temp.prev = newNode;
+        }
     }
 
     public static <T> void insertPrev(Node<T> node, Node<T> newNode) {
@@ -48,8 +50,10 @@ class Node<T> {
         Node<T> temp = node.prev;
         node.prev = newNode;
         newNode.prev = temp;
-        temp.next = newNode;
         newNode.next = node;
+        if (temp != null) {
+            temp.next = newNode;
+        }
     }
 
     public static <T> void delete(Node<T> node) {

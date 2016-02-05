@@ -43,7 +43,12 @@ class ListBase<T> {
         insert(new Node<>(obj), 0);
     }
     protected void pushBack(T obj) {
-        insert(new Node<>(obj), size()-1);
+        if (size() == 0) {
+            front = new Node<>(obj);
+            size++;
+        } else {
+            insert(new Node<>(obj), size()-1);
+        }
     }
 
     protected void delete(int index) {
