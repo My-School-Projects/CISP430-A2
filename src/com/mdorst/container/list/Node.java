@@ -11,6 +11,8 @@ package com.mdorst.container.list;
  * + data : T
  * + next : Node
  * + prev : Node
+ * + constructor()
+ * + constructor(T)
  *
  * <<static>> + insertNext(Node, Node)
  * <<static>> + swapNext(Node)
@@ -20,6 +22,11 @@ class Node<T> {
     public T data;
     public Node<T> next;
     public Node<T> prev;
+
+    public Node() {}
+    public Node(T obj) {
+        data = obj;
+    }
 
     public static <T> void insertNext(Node<T> node, Node<T> newNode) {
         if (node == null || newNode == null) {
