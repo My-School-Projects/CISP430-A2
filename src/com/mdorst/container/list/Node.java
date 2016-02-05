@@ -56,8 +56,12 @@ class Node<T> {
         if (node == null || node.next == null) {
             throw new NullPointerException();
         }
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
+        if (node.prev != null) {
+            node.prev.next = node.next;
+        }
+        if (node.next != null) {
+            node.next.prev = node.prev;
+        }
     }
 
     public static <T> void swapNext(Node<T> node) {
