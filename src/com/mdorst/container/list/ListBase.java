@@ -11,9 +11,9 @@ package com.mdorst.container.list;
  * Processor : (Function(T) : T)
  *
  * ListBase
- * # front : Node
- * # back : Node
- * # size : Integer
+ * - front : Node
+ * - back : Node
+ * - size : Integer
  *
  * + size() : Integer
  * # insert(Node, Integer)
@@ -25,6 +25,7 @@ package com.mdorst.container.list;
  * # sort(Predicate)
  * # iterate(Processor)
  * # search(T, Predicate) : Boolean
+ * - getNode(Integer) : Node
  * + constructor()
  * + constructor(ListBase)
  */
@@ -34,14 +35,7 @@ class ListBase<T> {
     protected int size;
 
     protected void insert(Node<T> newNode, int index) {
-        Node<T> node = front;
-        if (index >= size()) {
-            throw new IndexOutOfBoundsException();
-        }
-        for (int i = 0; i < index; i++) {
-            node = node.next;
-        }
-        Node.insertNext(node, newNode);
+        Node.insertNext(getNode(index), newNode);
         size++;
     }
 
@@ -63,5 +57,16 @@ class ListBase<T> {
     public ListBase() {
         front = new Node<>();
         size = 0;
+    }
+
+    private Node<T> getNode(int index) {
+        if (index >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> node = front;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
     }
 }
