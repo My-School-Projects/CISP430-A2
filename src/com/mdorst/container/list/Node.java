@@ -21,15 +21,15 @@ class Node<T> {
     public Node<T> next;
     public Node<T> prev;
 
-    public static <T> void insertNext(Node<T> loc, Node<T> obj) {
-        if (loc == null || obj == null) {
+    public static <T> void insertNext(Node<T> node, Node<T> newNode) {
+        if (node == null || newNode == null) {
             throw new NullPointerException();
         }
-        Node<T> temp = loc.next;
-        loc.next = obj;
-        temp.prev = obj;
-        obj.prev = loc;
-        obj.next = temp;
+        Node<T> temp = node.next;
+        node.next = newNode;
+        temp.prev = newNode;
+        newNode.prev = node;
+        newNode.next = temp;
     }
 
     public static <T> void swapNext(Node<T> node) {
