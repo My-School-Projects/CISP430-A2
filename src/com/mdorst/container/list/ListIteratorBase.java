@@ -12,6 +12,8 @@ package com.mdorst.container.list;
  * # set(T)
  * # next() : T
  * # prev() : T
+ * # hasNext() : Boolean
+ * # hasPrev() : Boolean
  * # constructor(Node)
  */
 
@@ -32,6 +34,14 @@ class ListIteratorBase<T> {
 
     protected T prev() {
         return (node = node.prev).data;
+    }
+
+    protected boolean hasNext() {
+        return node.next != null;
+    }
+
+    protected boolean hasPrev() {
+        return node.prev != null;
     }
 
     protected ListIteratorBase(Node<T> node) {
