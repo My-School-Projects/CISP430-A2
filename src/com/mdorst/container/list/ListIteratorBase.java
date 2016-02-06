@@ -4,23 +4,25 @@ package com.mdorst.container.list;
  * Michael Dorst
  */
 
+import com.mdorst.container.Iterator;
+
 /**
  * ListIteratorBase
  * - node : Node
  *
- * # get() : T
+ * + get() : T
+ * + next() : T
+ * + prev() : T
+ * + hasNext() : Boolean
+ * + hasPrev() : Boolean
  * # set(T)
- * # next() : T
- * # prev() : T
- * # hasNext() : Boolean
- * # hasPrev() : Boolean
  * # constructor(Node)
  */
 
-class ListIteratorBase<T> {
+class ListIteratorBase<T> extends Iterator<T> {
     private Node<T> node;
 
-    protected T get() {
+    public T get() {
         return node.data;
     }
 
@@ -28,19 +30,19 @@ class ListIteratorBase<T> {
         node.data = data;
     }
 
-    protected T next() {
+    public T next() {
         return (node = node.next).data;
     }
 
-    protected T prev() {
+    public T prev() {
         return (node = node.prev).data;
     }
 
-    protected boolean hasNext() {
+    public boolean hasNext() {
         return node.next != null;
     }
 
-    protected boolean hasPrev() {
+    public boolean hasPrev() {
         return node.prev != null;
     }
 
