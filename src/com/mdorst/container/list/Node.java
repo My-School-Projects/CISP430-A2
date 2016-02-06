@@ -17,7 +17,7 @@ package com.mdorst.container.list;
  * <<static>> + insertNext(Node, Node)
  * <<static>> + insertPrev(Node, Node)
  * <<static>> + delete(Node)
- * <<static>> + swapNext(Node)
+ * <<static>> + swap(Node, Node)
  */
 
 class Node<T> {
@@ -68,15 +68,16 @@ class Node<T> {
         }
     }
 
-    public static <T> void swapNext(Node<T> node) {
-        if (node == null || node.next == null) {
-            throw new NullPointerException();
-        }
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        node.next.next.prev = node;
-        node.next = node.next.next;
-        node.prev.next.next = node;
-        node.prev = node.prev.next;
+    public static <T> void swap(Node<T> n, Node<T> o) {
+        n.next.prev = o;
+        n.prev.next = o;
+        o.next.prev = n;
+        o.prev.next = n;
+        Node<T> temp = n.next;
+        n.next = o.next;
+        o.next = temp;
+        temp = n.prev;
+        n.prev = o.prev;
+        o.prev = temp;
     }
 }
