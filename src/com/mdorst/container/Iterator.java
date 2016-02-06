@@ -5,7 +5,7 @@ package com.mdorst.container;
  */
 
 /**
- * ListIteratorBase
+ * Iterator
  * + get() : T
  * + next() : T
  * + prev() : T
