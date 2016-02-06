@@ -4,11 +4,15 @@ package com.mdorst.container.list;
  * Michael Dorst
  */
 
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+
 /**
  * T : Generic
  *
  * Predicate : (Function(T, T) : Boolean)
- * Processor : (Function(T) : T)
+ * Block : Function(T)
+ * UnaryOperator : (Function(T) : T)
  *
  * ListBase
  * - front : Node
@@ -23,7 +27,8 @@ package com.mdorst.container.list;
  * # popFront() : T
  * # popBack() : T
  * # sort(Predicate)
- * # iterate(Processor)
+ * # iterate(Block)
+ * # transform(UnaryOperator)
  * # search(T, Predicate) : Boolean
  * - getNode(Integer) : Node
  * + constructor()
@@ -33,7 +38,7 @@ package com.mdorst.container.list;
 class ListBase<T> {
     protected Node<T> front;
     protected int size;
-    
+
     public int size() {
         return size;
     }
@@ -69,6 +74,22 @@ class ListBase<T> {
         Node<T> node = getNode(size()-1);
         Node.delete(node);
         return node.data;
+    }
+
+    protected void iterate(Consumer<T> block) {
+        Node<T> node = front;
+        for (int i = 0; i < size(); i++) {
+            block.accept(node.data);
+            node = node.next;
+        }
+    }
+
+    protected void transform(UnaryOperator<T> operator) {
+        Node<T> node = front;
+        for (int i = 0; i < size(); i++) {
+            node.data = operator.apply(node.data);
+            node = node.next;
+        }
     }
 
     private Node<T> getNode(int index) {

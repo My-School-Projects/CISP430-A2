@@ -4,13 +4,17 @@ package com.mdorst.container.list;
  * Michael Dorst
  */
 
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+
 /**
  * List is a ListBase
  *
  * T : Generic
  *
  * Predicate : (Function(T, T) : Boolean)
- * Processor : (Function(T) : T)
+ * Block : Function(T)
+ * UnaryOperator : (Function(T) : T)
  *
  * List
  * + insert(Node, Integer)
@@ -20,7 +24,8 @@ package com.mdorst.container.list;
  * + popFront() : T
  * + popBack() : T
  * + sort(Predicate)
- * + iterate(Processor)
+ * + iterate(Block)
+ * + transform(UnaryOperator)
  * + search(T, Predicate) : Boolean
  * + constructor()
  * + constructor(ListBase)
@@ -55,6 +60,16 @@ public class List<T> extends ListBase<T> {
     @Override
     public T popBack() {
         return super.popBack();
+    }
+
+    @Override
+    public void iterate(Consumer<T> block) {
+        super.iterate(block);
+    }
+
+    @Override
+    public void transform(UnaryOperator<T> operator) {
+        super.transform(operator);
     }
 
     @Override
