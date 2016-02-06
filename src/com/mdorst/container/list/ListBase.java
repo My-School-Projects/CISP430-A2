@@ -78,11 +78,15 @@ class ListBase<T> {
     }
 
     protected ImmutableListIterator<T> immutableIterator() {
-        return new ImmutableListIterator<>(front);
+        Node<T> node = new Node<>();
+        node.next = front;
+        return new ImmutableListIterator<>(node);
     }
 
     protected MutableListIterator<T> mutableIterator() {
-        return new MutableListIterator<>(front);
+        Node<T> node = new Node<>();
+        node.next = front;
+        return new MutableListIterator<>(node);
     }
 
     protected void iterate(Consumer<T> block) {
