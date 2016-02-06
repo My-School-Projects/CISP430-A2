@@ -24,6 +24,8 @@ import java.util.function.UnaryOperator;
  * + popFront() : T
  * + popBack() : T
  * + sort(Predicate)
+ * + immutableIterator() : ImmutableListIterator
+ * + mutableIterator() : MutableListIterator
  * + iterate(Block)
  * + transform(UnaryOperator)
  * + search(T, Predicate) : Boolean
@@ -60,6 +62,16 @@ public class List<T> extends ListBase<T> {
     @Override
     public T popBack() {
         return super.popBack();
+    }
+
+    @Override
+    public ImmutableListIterator<T> immutableIterator() {
+        return super.immutableIterator();
+    }
+
+    @Override
+    public MutableListIterator<T> mutableIterator() {
+        return super.mutableIterator();
     }
 
     @Override

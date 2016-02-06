@@ -26,6 +26,8 @@ import java.util.function.UnaryOperator;
  * # popFront() : T
  * # popBack() : T
  * # sort(Predicate)
+ * # immutableIterator() : ImmutableListIterator
+ * # mutableIterator() : MutableListIterator
  * # iterate(Block)
  * # transform(UnaryOperator)
  * # search(T, Predicate) : Boolean
@@ -73,6 +75,14 @@ class ListBase<T> {
         Node<T> node = getNode(size()-1);
         Node.delete(node);
         return node.data;
+    }
+
+    protected ImmutableListIterator<T> immutableIterator() {
+        return new ImmutableListIterator<>(front);
+    }
+
+    protected MutableListIterator<T> mutableIterator() {
+        return new MutableListIterator<>(front);
     }
 
     protected void iterate(Consumer<T> block) {
