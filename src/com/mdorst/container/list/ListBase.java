@@ -16,7 +16,6 @@ import java.util.function.UnaryOperator;
  *
  * ListBase
  * - front : Node
- * - back : Node
  * - size : Integer
  *
  * + size() : Integer
