@@ -22,6 +22,7 @@ import com.mdorst.container.Iterator;
 class ListIteratorBase<T> extends Iterator<T> {
     private Node<T> node;
 
+    @Override
     public T get() {
         return node.data;
     }
@@ -30,18 +31,22 @@ class ListIteratorBase<T> extends Iterator<T> {
         node.data = data;
     }
 
+    @Override
     public T next() {
         return (node = node.next).data;
     }
 
+    @Override
     public T prev() {
         return (node = node.prev).data;
     }
 
+    @Override
     public boolean hasNext() {
         return node.next != null;
     }
 
+    @Override
     public boolean hasPrev() {
         return node.prev != null;
     }
