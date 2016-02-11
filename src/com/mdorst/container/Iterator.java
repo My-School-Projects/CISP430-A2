@@ -11,12 +11,16 @@ package com.mdorst.container;
  * + prev() : T
  * + hasNext() : Boolean
  * + hasPrev() : Boolean
+ * + swap(Iterator)
+ * + copy() : Iterator
  */
 
-public abstract class Iterator<T> {
-    public abstract T get();
-    public abstract T next();
-    public abstract T prev();
-    public abstract boolean hasNext();
-    public abstract boolean hasPrev();
+public interface Iterator<T> {
+    public T get();
+    public T next();
+    public T prev();
+    public boolean hasNext();
+    public boolean hasPrev();
+    public void swap(Iterator<T> it);
+    public Iterator<T> copy();
 }

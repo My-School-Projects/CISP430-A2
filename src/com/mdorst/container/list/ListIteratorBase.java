@@ -19,7 +19,7 @@ import com.mdorst.container.Iterator;
  * # constructor(Node)
  */
 
-class ListIteratorBase<T> extends Iterator<T> {
+class ListIteratorBase<T> implements Iterator<T> {
     private Node<T> node;
 
     @Override
@@ -49,6 +49,16 @@ class ListIteratorBase<T> extends Iterator<T> {
     @Override
     public boolean hasPrev() {
         return node.prev != null;
+    }
+
+    @Override
+    public void swap(Iterator<T> it) {
+        Node.swap(node, ((ListIteratorBase<T>)it).node);
+    }
+
+    @Override
+    public ListIteratorBase<T> copy() {
+        return new ListIteratorBase<>(node);
     }
 
     protected ListIteratorBase(Node<T> node) {
