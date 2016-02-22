@@ -42,6 +42,11 @@ public class ImmutableListIterator<T> extends ListIteratorBase<T> {
         return super.hasPrev();
     }
 
+    @Override
+    public ImmutableListIterator<T> copy() {
+        return (ImmutableListIterator<T>) super.copy();
+    }
+
     ImmutableListIterator(Node<T> node) {
         super(node);
     }

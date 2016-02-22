@@ -4,6 +4,8 @@ package com.mdorst.container.list;
  * Michael Dorst
  */
 
+import com.mdorst.container.Iterator;
+
 /**
  * MutableListIterator
  * - node : Node
@@ -46,6 +48,16 @@ public class MutableListIterator<T> extends ListIteratorBase<T> {
     @Override
     public boolean hasPrev() {
         return super.hasPrev();
+    }
+
+    @Override
+    public void swap(Iterator<T> it) {
+        super.swap(it);
+    }
+
+    @Override
+    public MutableListIterator<T> copy() {
+        return (MutableListIterator<T>) super.copy();
     }
 
     MutableListIterator(Node<T> node) {
