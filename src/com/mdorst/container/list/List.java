@@ -4,6 +4,7 @@ package com.mdorst.container.list;
  * Michael Dorst
  */
 
+import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
@@ -82,6 +83,11 @@ public class List<T> extends ListBase<T> {
     @Override
     public void transform(UnaryOperator<T> operator) {
         super.transform(operator);
+    }
+
+    @Override
+    public void sort(Comparator<T> c) {
+        super.sort(c);
     }
 
     @Override

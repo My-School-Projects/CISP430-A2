@@ -11,18 +11,18 @@ public class Main {
         list.pushBack("hello");
         list.pushBack("what's up?");
         list.pushBack("goodbye");
-        list.transform((data) -> {
-            return data += " MODIFIED!";
-        });
+        list.transform((data) -> data += " MODIFIED!");
         ImmutableListIterator<String> it = list.immutableIterator();
-        while (it.hasNext()) {
+        /*while (it.hasNext()) {
             System.out.println(it.next());
-        }
+        }*/
         MutableListIterator<String> mit = list.mutableIterator();
         while (mit.hasNext()) {
             mit.next();
             mit.set(mit.get() + " AGAIN!!");
         }
+        //list.iterate(System.out::println);
+        list.sort(String::compareTo);
         list.iterate(System.out::println);
     }
 }

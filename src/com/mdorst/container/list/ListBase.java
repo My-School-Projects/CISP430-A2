@@ -4,8 +4,6 @@ package com.mdorst.container.list;
  * Michael Dorst
  */
 
-import com.mdorst.util.function.Sort;
-
 import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
@@ -16,7 +14,6 @@ import java.util.function.UnaryOperator;
  * Predicate : (Function(T, T) : Boolean)
  * Block : Function(T)
  * UnaryOperator : (Function(T) : T)
- * Sort : Function(Predicate, (Function() : Predicate, Iterator))
  *
  * ListBase
  * - front : Node
@@ -29,7 +26,7 @@ import java.util.function.UnaryOperator;
  * # delete(Integer)
  * # popFront() : T
  * # popBack() : T
- * # sort(Predicate, Sort)
+ * # sort(Predicate)
  * # immutableIterator() : ImmutableListIterator
  * # mutableIterator() : MutableListIterator
  * # iterate(Block)
@@ -93,16 +90,26 @@ class ListBase<T> {
         return new MutableListIterator<>(node);
     }
 
-    protected void sort(Comparator<T> comparator, Sort<T> sort) {
-        sort.call(comparator, mutableIterator());
+    protected void sort(Comparator<T> c) {
+        Node<T> m = front;
+        // bubble sort: YAY!
+        while (m.hasNext()) {
+            Node<T> n = m;
+            while (n.hasNext()) {
+                if (c.compare(n.data, n.next.data) < 0) {
+                    n.swap(n.next);
+                }
+                n = n.next;
+            }
+            m = m.next;
+        }
     }
 
     protected void iterate(Consumer<T> block) {
         Node<T> node = front;
-        for (int i = 0; i < size(); i++) {
+        do {
             block.accept(node.data);
-            node = node.next;
-        }
+        } while ((node = node.next) != null);
     }
 
     protected void transform(UnaryOperator<T> operator) {
