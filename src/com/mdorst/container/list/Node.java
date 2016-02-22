@@ -37,35 +37,9 @@ class Node<T> {
     }
 
     public void swap(Node<T> node) {
-        if (this.next == node) {
-            swap_adjacent(this, node);
-        } else if (this.prev == node) {
-            swap_adjacent(node, this);
-        } else {
-            swap_non_adjacent(this, node);
-        }
-    }
-
-    private static <T> void swap_adjacent(Node<T> n, Node<T> o) {
-        n.next = o.next;
-        if (n.next != null) o.next.prev = n;
-        o.next = n;
-        o.prev = n.prev;
-        if (n.prev != null) n.prev.next = o;
-        n.prev = o;
-    }
-
-    private static <T> void swap_non_adjacent(Node<T> n, Node<T> o) {
-        if (n.hasNext()) n.next.prev = o;
-        if (n.hasPrev()) n.prev.next = o;
-        if (o.hasNext()) o.next.prev = n;
-        if (o.hasPrev()) o.prev.next = n;
-        Node<T> temp = n.next;
-        n.next = o.next;
-        o.next = temp;
-        temp = n.prev;
-        n.prev = o.prev;
-        o.prev = temp;
+        T temp = this.data;
+        this.data = node.data;
+        node.data = temp;
     }
 
     public Node() {}

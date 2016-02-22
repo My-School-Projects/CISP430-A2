@@ -98,12 +98,8 @@ class ListBase<T> {
             while (n.hasNext()) {
                 if (c.compare(n.data, n.next.data) < 0) {
                     n.swap(n.next);
-                    if (n == front) {
-                        front = n.prev;
-                    }
-                } else {
-                    n = n.next;
                 }
+                n = n.next;
             }
             m = m.next;
         }
