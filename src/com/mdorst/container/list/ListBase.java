@@ -91,17 +91,18 @@ class ListBase<T> {
     }
 
     protected void sort(Comparator<T> c) {
-        Node<T> m = front;
+        Node<T> limiter = null;
+        Node<T> n = front;
         // bubble sort: YAY!
-        while (m.hasNext()) {
-            Node<T> n = m;
-            while (n.hasNext()) {
-                if (c.compare(n.data, n.next.data) < 0) {
+        while (limiter != front) {
+            while (n.hasNext() && n != limiter) {
+                if (c.compare(n.data, n.next.data) > 0) {
                     n.swap(n.next);
                 }
                 n = n.next;
             }
-            m = m.next;
+            limiter = n.prev;
+            n = front;
         }
     }
 
