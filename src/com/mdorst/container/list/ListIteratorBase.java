@@ -53,7 +53,7 @@ class ListIteratorBase<T> implements Iterator<T> {
 
     @Override
     public void swap(Iterator<T> it) {
-        Node.swap(node, ((ListIteratorBase<T>)it).node);
+        node.swap(((ListIteratorBase<T>)it).node);
     }
 
     @Override
