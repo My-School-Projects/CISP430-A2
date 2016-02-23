@@ -10,9 +10,10 @@ package com.mdorst.container.list;
  * T : Generic
  *
  * Queue
- * + push(T)
- * + pop() : T
- * + top() : T
+ * + enqueue(T)
+ * + dequeue() : T
+ * + sort(Predicate)
+ * + search(T, Predicate) : Boolean
  * + constructor()
  * + constructor(ListBase)
  */

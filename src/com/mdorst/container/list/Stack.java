@@ -12,10 +12,9 @@ package com.mdorst.container.list;
  * Predicate : (Function(T, T) : Boolean)
  *
  * Stack
- * + enqueue(T)
- * + dequeue() : T
- * + sort(Predicate)
- * + search(T, Predicate) : Boolean
+ * + push(T)
+ * + pop() : T
+ * + top() : T
  * + constructor()
  * + constructor(ListBase)
  */
