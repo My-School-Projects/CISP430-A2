@@ -9,6 +9,8 @@ package com.mdorst.container.list;
  *
  * T : Generic
  *
+ * Predicate : (Function(T, T) : Boolean)
+ *
  * Queue
  * + enqueue(T)
  * + dequeue() : T

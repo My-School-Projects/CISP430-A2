@@ -9,8 +9,6 @@ package com.mdorst.container.list;
  *
  * T : Generic
  *
- * Predicate : (Function(T, T) : Boolean)
- *
  * Stack
  * + push(T)
  * + pop() : T
