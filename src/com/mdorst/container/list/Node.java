@@ -14,13 +14,9 @@ package com.mdorst.container.list;
  * + swap(Node)
  * + hasNext() : Boolean
  * + hasPrev() : Boolean
+ * + insertNext(Node)
  * + constructor()
  * + constructor(T)
- *
- * <<static>> - swap_adjacent(Node, Node)
- * <<static>> - swap_non_adjacent(Node, Node)
- * <<static>> + insertNext(Node, Node)
- * <<static>> + insertPrev(Node, Node)
  * <<static>> + delete(Node)
  */
 
@@ -47,29 +43,16 @@ class Node<T> {
         data = obj;
     }
 
-    public static <T> void insertNext(Node<T> node, Node<T> newNode) {
-        if (node == null || newNode == null) {
+    public void insertNext(Node<T> node) {
+        if (node == null) {
             throw new NullPointerException();
         }
-        Node<T> temp = node.next;
-        node.next = newNode;
-        newNode.next = temp;
-        newNode.prev = node;
+        Node<T> temp = this.next;
+        this.next = node;
+        node.next = temp;
+        node.prev = this;
         if (temp != null) {
-            temp.prev = newNode;
-        }
-    }
-
-    public static <T> void insertPrev(Node<T> node, Node<T> newNode) {
-        if (node == null || newNode == null) {
-            throw new NullPointerException();
-        }
-        Node<T> temp = node.prev;
-        node.prev = newNode;
-        newNode.prev = temp;
-        newNode.next = node;
-        if (temp != null) {
-            temp.next = newNode;
+            temp.prev = node;
         }
     }
 

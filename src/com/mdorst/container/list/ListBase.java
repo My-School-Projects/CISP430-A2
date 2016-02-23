@@ -21,11 +21,14 @@ import java.util.function.UnaryOperator;
  *
  * + size() : Integer
  * # insert(Node, Integer)
+ * # delete(T)
+ * # deleteAll(T)
  * # pushFront(T)
  * # pushBack(T)
  * # delete(Integer)
  * # popFront() : T
  * # popBack() : T
+ * # search(T) : Boolean
  * # sort(Predicate)
  * # immutableIterator() : ImmutableListIterator
  * # mutableIterator() : MutableListIterator
@@ -45,9 +48,26 @@ class ListBase<T> {
         return size;
     }
 
-    protected void insert(Node<T> newNode, int index) {
-        Node.insertNext(getNode(index), newNode);
+    protected void insert(Node<T> node, int index) {
+        getNode(index).insertNext(node);
         size++;
+    }
+
+    protected void delete(T key) {
+        for (Node<T> n = front; n.hasNext(); n = n.next) {
+            if (key == n.data) {
+                Node.delete(n);
+                return;
+            }
+        }
+    }
+
+    protected void deleteAll(T key) {
+        for (Node<T> n = front; n.hasNext(); n = n.next) {
+            if (key == n.data) {
+                Node.delete(n);
+            }
+        }
     }
 
     protected void pushFront(T obj) {
@@ -88,6 +108,15 @@ class ListBase<T> {
         Node<T> node = new Node<>();
         node.next = front;
         return new MutableListIterator<>(node);
+    }
+
+    protected boolean search(T key) {
+        for (Node<T> n = front; n.hasNext(); n = n.next) {
+            if (key == n.data) {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected void sort(Comparator<T> c) {
