@@ -28,5 +28,8 @@ public class Main {
         System.out.println();
         list.sort(String::compareTo);
         list.iterate(System.out::println);
+        System.out.println(list.search("Hello MODIFIED! AGAIN!!"));
+        list.delete("Hello MODIFIED! AGAIN!!");
+        System.out.println(list.search("Hello MODIFIED! AGAIN!!"));
     }
 }

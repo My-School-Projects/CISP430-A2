@@ -56,6 +56,16 @@ public class List<T> extends ListBase<T> {
     }
 
     @Override
+    public void delete(T key) {
+        super.delete(key);
+    }
+
+    @Override
+    public void deleteAll(T key) {
+        super.deleteAll(key);
+    }
+
+    @Override
     public T popFront() {
         return super.popFront();
     }
@@ -83,6 +93,11 @@ public class List<T> extends ListBase<T> {
     @Override
     public void transform(UnaryOperator<T> operator) {
         super.transform(operator);
+    }
+
+    @Override
+    public boolean search(T key) {
+        return super.search(key);
     }
 
     @Override
