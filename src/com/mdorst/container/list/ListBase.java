@@ -5,6 +5,7 @@ package com.mdorst.container.list;
  */
 
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
@@ -55,7 +56,7 @@ class ListBase<T> {
 
     protected void delete(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
-            if (key == n.data) {
+            if (Objects.equals(key, n.data)) {
                 Node.delete(n);
                 return;
             }
@@ -64,7 +65,7 @@ class ListBase<T> {
 
     protected void deleteAll(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
-            if (key == n.data) {
+            if (Objects.equals(key, n.data)) {
                 Node.delete(n);
             }
         }
@@ -112,7 +113,7 @@ class ListBase<T> {
 
     protected boolean search(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
-            if (key == n.data) {
+            if (Objects.equals(key, n.data)) {
                 return true;
             }
         }
