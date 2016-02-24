@@ -22,6 +22,7 @@ import java.util.function.UnaryOperator;
  *
  * + size() : Integer
  * # insert(Node, Integer)
+ * # get(Integer) : T
  * # delete(T)
  * # deleteAll(T)
  * # pushFront(T)
@@ -52,6 +53,10 @@ class ListBase<T> {
     protected void insert(Node<T> node, int index) {
         getNode(index).insertNext(node);
         size++;
+    }
+
+    protected T get(int index) {
+        return getNode(index).data;
     }
 
     protected void delete(T key) {

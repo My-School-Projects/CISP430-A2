@@ -41,6 +41,11 @@ public class List<T> extends ListBase<T> {
     }
 
     @Override
+    public T get(int index) {
+        return super.get(index);
+    }
+
+    @Override
     public void pushFront(T obj) {
         super.pushFront(obj);
     }
