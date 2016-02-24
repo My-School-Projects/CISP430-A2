@@ -77,7 +77,12 @@ class ListBase<T> {
     }
 
     protected void pushFront(T obj) {
-        insert(obj, 0);
+        if (size() == 0) {
+            front = new Node<>(obj);
+            size++;
+        } else {
+            insert(obj, 0);
+        }
     }
 
     protected void pushBack(T obj) {
@@ -127,18 +132,24 @@ class ListBase<T> {
     }
 
     protected void sort(Comparator<T> c) {
-        Node<T> limiter = null;
-        Node<T> n = front;
-        // bubble sort: YAY!
-        while (limiter != front) {
-            while (n.hasNext() && n != limiter) {
-                if (c.compare(n.data, n.next.data) > 0) {
-                    n.swap(n.next);
-                }
-                n = n.next;
+        quickSort(c, front, getNode(size-1));
+    }
+
+    private void quickSort(Comparator<T> c, Node<T> start, Node<T> end) {
+        if (start == end) return;
+        Node<T> wall, n;
+        n = wall = start;
+        while (n != end) {
+            if (c.compare(n.data, end.data) < 1) {
+                n.swap(wall);
+                wall = wall.next;
             }
-            limiter = n.prev;
-            n = front;
+            n = n.next;
+        }
+        n.swap(wall);
+        if (start.next != end) {
+            if (wall.hasPrev()) quickSort(c, start, wall.prev);
+            if (wall.hasNext()) quickSort(c, wall.next, end);
         }
     }
 
