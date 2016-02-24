@@ -50,8 +50,8 @@ class ListBase<T> {
         return size;
     }
 
-    protected void insert(Node<T> node, int index) {
-        getNode(index).insertNext(node);
+    protected void insert(T obj, int index) {
+        getNode(index).insertNext(new Node<T>(obj));
         size++;
     }
 
@@ -77,14 +77,14 @@ class ListBase<T> {
     }
 
     protected void pushFront(T obj) {
-        insert(new Node<>(obj), 0);
+        insert(obj, 0);
     }
     protected void pushBack(T obj) {
         if (size() == 0) {
             front = new Node<>(obj);
             size++;
         } else {
-            insert(new Node<>(obj), size()-1);
+            insert(obj, size()-1);
         }
     }
 
