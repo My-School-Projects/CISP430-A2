@@ -79,6 +79,7 @@ class ListBase<T> {
     protected void pushFront(T obj) {
         insert(obj, 0);
     }
+
     protected void pushBack(T obj) {
         if (size() == 0) {
             front = new Node<>(obj);
