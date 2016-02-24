@@ -18,5 +18,13 @@ package com.mdorst.container.list;
  */
 
 public class Stack<T> extends ListBase<T> {
-    
+    public void push(T obj) {
+        super.pushFront(obj);
+    }
+    public T pop() {
+        return super.popFront();
+    }
+    public T top() {
+        return front.data;
+    }
 }
