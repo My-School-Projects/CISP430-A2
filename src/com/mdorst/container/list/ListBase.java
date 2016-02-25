@@ -42,10 +42,6 @@ import java.util.function.UnaryOperator;
  * + constructor(ListBase)
  */
 
-/**
- * Wassaaaap!
- */
-
 class ListBase<T> {
     protected Node<T> front;
     protected int size;
