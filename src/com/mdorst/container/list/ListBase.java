@@ -62,7 +62,7 @@ class ListBase<T> {
     protected void delete(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
-                Node.delete(n);
+                n.delete();
                 return;
             }
         }
@@ -71,7 +71,7 @@ class ListBase<T> {
     protected void deleteAll(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
-                Node.delete(n);
+                n.delete();
             }
         }
     }
@@ -95,18 +95,18 @@ class ListBase<T> {
     }
 
     protected void delete(int index) {
-        Node.delete(getNode(index));
+        getNode(index).delete();
     }
 
     protected T popFront() {
         Node<T> node = getNode(0);
-        Node.delete(node);
+        node.delete();
         return node.data;
     }
 
     protected T popBack() {
         Node<T> node = getNode(size()-1);
-        Node.delete(node);
+        node.delete();
         return node.data;
     }
 
