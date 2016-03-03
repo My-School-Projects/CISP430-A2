@@ -35,9 +35,9 @@ import java.util.function.UnaryOperator;
  */
 
 public class List<T> extends ListBase<T> {
-    @Override
     public void insert(T obj, int index) {
-        super.insert(obj, index);
+        getNode(index).insertNext(new Node<T>(obj));
+        size++;
     }
 
     @Override
