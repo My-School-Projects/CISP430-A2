@@ -56,6 +56,19 @@ class Node<T> {
         }
     }
     
+    public void insertPrev(Node<T> node) {
+        if (node == null) {
+            throw new NullPointerException();
+        }
+        Node<T> temp = this.prev;
+        this.prev = node;
+        node.prev = temp;
+        node.next = this;
+        if (temp != null) {
+            temp.next = node;
+        }
+    }
+    
     public void delete() {
         if (hasPrev()) {
             prev.next = next;
