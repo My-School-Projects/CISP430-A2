@@ -51,6 +51,11 @@ class ListBase<T> {
         return size;
     }
 
+    protected void insert(T obj, int index) {
+        getNode(index).insertNext(new Node<T>(obj));
+        size++;
+    }
+
     protected T get(int index) {
         return getNode(index).data;
     }
@@ -75,21 +80,19 @@ class ListBase<T> {
     protected void pushFront(T obj) {
         if (size() == 0) {
             front = back = new Node<>(obj);
+            size++;
         } else {
-            front.insertPrev(new Node<>(obj));
-            front = front.prev;
+            insert(obj, 0);
         }
-        size++;
     }
 
     protected void pushBack(T obj) {
         if (size() == 0) {
             front = back = new Node<>(obj);
+            size++;
         } else {
-            back.insertNext(new Node<>(obj));
-            back = back.next;
+            insert(obj, size()-1);
         }
-        size++;
     }
 
     protected void delete(int index) {
@@ -168,7 +171,7 @@ class ListBase<T> {
         }
     }
 
-    protected Node<T> getNode(int index) {
+    private Node<T> getNode(int index) {
         if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
         }
