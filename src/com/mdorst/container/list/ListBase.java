@@ -18,6 +18,7 @@ import java.util.function.UnaryOperator;
  *
  * ListBase
  * - front : Node
+ * - back : Node
  * - size : Integer
  *
  * + size() : Integer
@@ -43,7 +44,7 @@ import java.util.function.UnaryOperator;
  */
 
 class ListBase<T> {
-    protected Node<T> front;
+    protected Node<T> front, back;
     protected int size;
 
     public int size() {
@@ -78,7 +79,7 @@ class ListBase<T> {
 
     protected void pushFront(T obj) {
         if (size() == 0) {
-            front = new Node<>(obj);
+            front = back = new Node<>(obj);
             size++;
         } else {
             insert(obj, 0);
@@ -87,7 +88,7 @@ class ListBase<T> {
 
     protected void pushBack(T obj) {
         if (size() == 0) {
-            front = new Node<>(obj);
+            front = back = new Node<>(obj);
             size++;
         } else {
             insert(obj, size()-1);
@@ -99,13 +100,15 @@ class ListBase<T> {
     }
 
     protected T popFront() {
-        Node<T> node = getNode(0);
+        Node<T> node = front;
+        front = front.next;
         node.delete();
         return node.data;
     }
 
     protected T popBack() {
-        Node<T> node = getNode(size()-1);
+        Node<T> node = back;
+        back = back.prev;
         node.delete();
         return node.data;
     }
@@ -132,7 +135,7 @@ class ListBase<T> {
     }
 
     protected void sort(Comparator<T> c) {
-        quickSort(c, front, getNode(size-1));
+        quickSort(c, front, back);
     }
 
     private void quickSort(Comparator<T> c, Node<T> start, Node<T> end) {
@@ -172,9 +175,17 @@ class ListBase<T> {
         if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
         }
-        Node<T> node = front;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
+        Node<T> node;
+        if (index < size / 2) {
+            node = front;
+            for (int i = 0; i < index; i++) {
+                node = node.next;
+            }
+        } else {
+            node = back;
+            for (int i = size-1; i > 0; i++) {
+                node = node.prev;
+            }
         }
         return node;
     }
