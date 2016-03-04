@@ -33,7 +33,7 @@ import java.util.function.UnaryOperator;
  * # popBack() : T
  * # search(T) : Boolean
  * # sort(Predicate)
- * # immutableIterator() : ImmutableListIterator
+ * # iterator() : ListIterator
  * # mutableIterator() : MutableListIterator
  * # iterate(Block)
  * # transform(UnaryOperator)
@@ -49,27 +49,6 @@ class ListBase<T> {
 
     public int size() {
         return size;
-    }
-
-    protected T get(int index) {
-        return getNode(index).data;
-    }
-
-    protected void delete(T key) {
-        for (Node<T> n = front; n.hasNext(); n = n.next) {
-            if (Objects.equals(key, n.data)) {
-                n.delete();
-                return;
-            }
-        }
-    }
-
-    protected void deleteAll(T key) {
-        for (Node<T> n = front; n.hasNext(); n = n.next) {
-            if (Objects.equals(key, n.data)) {
-                n.delete();
-            }
-        }
     }
 
     protected void pushFront(T obj) {
@@ -92,10 +71,6 @@ class ListBase<T> {
         size++;
     }
 
-    protected void delete(int index) {
-        getNode(index).delete();
-    }
-
     protected T popFront() {
         Node<T> node = front;
         front = front.next;
@@ -110,16 +85,10 @@ class ListBase<T> {
         return node.data;
     }
 
-    protected ImmutableListIterator<T> immutableIterator() {
+    protected ListIterator<T> iterator() {
         Node<T> node = new Node<>();
         node.next = front;
-        return new ImmutableListIterator<>(node);
-    }
-
-    protected MutableListIterator<T> mutableIterator() {
-        Node<T> node = new Node<>();
-        node.next = front;
-        return new MutableListIterator<>(node);
+        return new ListIterator<>(node);
     }
 
     protected boolean search(T key) {

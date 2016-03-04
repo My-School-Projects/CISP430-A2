@@ -1,8 +1,7 @@
 package com.mdorst;
 
-import com.mdorst.container.list.ImmutableListIterator;
+import com.mdorst.container.list.ListIterator;
 import com.mdorst.container.list.List;
-import com.mdorst.container.list.MutableListIterator;
 import com.mdorst.container.list.Queue;
 
 public class Main {
@@ -29,16 +28,11 @@ public class Main {
         list.pushBack("How do you do?");
         list.pushBack("Do I know you?");
         list.transform((data) -> data += " MODIFIED!");
-        ImmutableListIterator<String> it = list.immutableIterator();
+        ListIterator<String> it = list.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }
         System.out.println();
-        MutableListIterator<String> mit = list.mutableIterator();
-        while (mit.hasNext()) {
-            mit.next();
-            mit.set(mit.get() + " AGAIN!!");
-        }
         list.iterate(System.out::println);
         System.out.println();
         list.sort(String::compareTo);

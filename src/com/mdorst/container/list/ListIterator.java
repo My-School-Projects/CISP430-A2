@@ -5,7 +5,7 @@ package com.mdorst.container.list;
  */
 
 /**
- * ImmutableListIterator
+ * ListIterator
  * - node : Node
  *
  * + get() : T
@@ -16,7 +16,7 @@ package com.mdorst.container.list;
  * ~ constructor(Node)
  */
 
-public class ImmutableListIterator<T> extends ListIteratorBase<T> {
+public class ListIterator<T> extends ListIteratorBase<T> {
     @Override
     public T get() {
         return super.get();
@@ -43,11 +43,11 @@ public class ImmutableListIterator<T> extends ListIteratorBase<T> {
     }
 
     @Override
-    public ImmutableListIterator<T> copy() {
-        return (ImmutableListIterator<T>) super.copy();
+    public ListIterator<T> copy() {
+        return (ListIterator<T>) super.copy();
     }
 
-    ImmutableListIterator(Node<T> node) {
+    ListIterator(Node<T> node) {
         super(node);
     }
 }

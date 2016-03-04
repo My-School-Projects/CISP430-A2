@@ -5,6 +5,7 @@ package com.mdorst.container.list;
  */
 
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
@@ -25,7 +26,7 @@ import java.util.function.UnaryOperator;
  * + popFront() : T
  * + popBack() : T
  * + sort(Predicate)
- * + immutableIterator() : ImmutableListIterator
+ * + iterator() : ListIterator
  * + mutableIterator() : MutableListIterator
  * + iterate(Block)
  * + transform(UnaryOperator)
@@ -40,9 +41,29 @@ public class List<T> extends ListBase<T> {
         size++;
     }
 
-    @Override
     public T get(int index) {
-        return super.get(index);
+        return getNode(index).data;
+    }
+
+    public void delete(int index) {
+        getNode(index).delete();
+    }
+
+    public void delete(T key) {
+        for (Node<T> n = front; n.hasNext(); n = n.next) {
+            if (Objects.equals(key, n.data)) {
+                n.delete();
+                return;
+            }
+        }
+    }
+
+    public void deleteAll(T key) {
+        for (Node<T> n = front; n.hasNext(); n = n.next) {
+            if (Objects.equals(key, n.data)) {
+                n.delete();
+            }
+        }
     }
 
     @Override
@@ -56,21 +77,6 @@ public class List<T> extends ListBase<T> {
     }
 
     @Override
-    public void delete(int index) {
-        super.delete(index);
-    }
-
-    @Override
-    public void delete(T key) {
-        super.delete(key);
-    }
-
-    @Override
-    public void deleteAll(T key) {
-        super.deleteAll(key);
-    }
-
-    @Override
     public T popFront() {
         return super.popFront();
     }
@@ -81,13 +87,8 @@ public class List<T> extends ListBase<T> {
     }
 
     @Override
-    public ImmutableListIterator<T> immutableIterator() {
-        return super.immutableIterator();
-    }
-
-    @Override
-    public MutableListIterator<T> mutableIterator() {
-        return super.mutableIterator();
+    public ListIterator<T> iterator() {
+        return super.iterator();
     }
 
     @Override

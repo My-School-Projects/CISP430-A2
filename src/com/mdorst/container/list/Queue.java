@@ -22,7 +22,7 @@ import java.util.function.Consumer;
  * + search(T, Predicate) : Boolean
  * + iterate(Block)
  * + mutableIterator() : MutableListIterator
- * + immutableIterator() : ImmutableListIterator
+ * + iterator() : ListIterator
  * + constructor()
  * + constructor(ListBase)
  */
@@ -37,8 +37,8 @@ public class Queue<T> extends ListBase<T> {
     }
 
     @Override
-    public ImmutableListIterator<T> immutableIterator() {
-        return super.immutableIterator();
+    public ListIterator<T> iterator() {
+        return super.iterator();
     }
 
     @Override
