@@ -1,16 +1,10 @@
 package com.mdorst.container.list;
 
-/**
- * Michael Dorst
- */
-
-import java.util.Comparator;
 import java.util.Objects;
-import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
-/**
- * List is a ListBase
+/*
+ * List is a SortableList
  *
  * T : Generic
  *
@@ -31,6 +25,12 @@ import java.util.function.UnaryOperator;
  * + popBack() : T
  */
 
+/**
+ * This class extends SortableList, and provides facilities for use
+ * as a list container.
+ *
+ * @param <T> the type of the elements held in this collection
+ */
 public class List<T> extends SortableList<T> {
 
     /**
