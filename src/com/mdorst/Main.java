@@ -1,8 +1,9 @@
 package com.mdorst;
 
-import com.mdorst.container.list.ListIterator;
 import com.mdorst.container.list.List;
 import com.mdorst.container.list.Queue;
+
+import java.util.Iterator;
 
 public class Main {
 
@@ -28,7 +29,7 @@ public class Main {
         list.pushBack("How do you do?");
         list.pushBack("Do I know you?");
         list.transform((data) -> data += " MODIFIED!");
-        ListIterator<String> it = list.iterator();
+        Iterator<String> it = list.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }

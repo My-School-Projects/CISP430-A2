@@ -8,7 +8,7 @@ import java.util.function.Consumer;
  * SortableList
  * + search(T) : Boolean
  * + sort(Predicate)
- * + iterator() : ListIterator
+ * + iterator() : Iterator
  * + iterate(Function)
  */
 
@@ -44,10 +44,10 @@ class SortableList<T> extends ListBase<T> {
         quickSort(c, front, back);
     }
 
-    public ListIterator<T> iterator() {
+    public Iterator<T> iterator() {
         Node<T> node = new Node<>();
         node.next = front;
-        return new ListIterator<>(node);
+        return new Iterator<>(node);
     }
 
     /**
