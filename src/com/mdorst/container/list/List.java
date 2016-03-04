@@ -34,8 +34,8 @@ import java.util.function.UnaryOperator;
 public class List<T> extends SortableList<T> {
 
     /**
-     * Insert <tt>obj</tt> into the collection
-     * at the position specified by <tt>index</tt>
+     * Insert {@code obj} into the collection
+     * at the position specified by {@code index}
      * @param obj the element to be inserted
      * @param index the index at which to insert the element
      */
@@ -64,7 +64,7 @@ public class List<T> extends SortableList<T> {
     }
 
     /**
-     * Delete the first occurrence of <tt>key</tt> in the collection
+     * Delete the first occurrence of {@code key} in the collection
      *
      * @param key the element to be removed
      */
@@ -78,7 +78,7 @@ public class List<T> extends SortableList<T> {
     }
 
     /**
-     * Delete all occurrences of <tt>key</tt> in the collection
+     * Delete all occurrences of {@code key} in the collection
      *
      * @param key the element to be removed
      */
@@ -91,8 +91,8 @@ public class List<T> extends SortableList<T> {
     }
 
     /**
-     * Iterates over the collection, calling <tt>operator</tt> on each element,
-     * and replacing each one with the value returned by <tt>operator</tt>
+     * Iterates over the collection, calling {@code operator} on each element,
+     * and replacing each one with the value returned by {@code operator}
      *
      * @param operator the function to be called on each element
      */

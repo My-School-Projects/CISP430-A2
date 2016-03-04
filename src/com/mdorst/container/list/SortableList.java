@@ -23,8 +23,8 @@ class SortableList<T> extends ListBase<T> {
      * Searches the collection for an element matching key
      *
      * @param key the element to find
-     * @return <tt>true</tt> if an element matching <tt>key</tt>
-     * exists withing the collection, <tt>false</tt> otherwise
+     * @return {@code true} if an element matching {@code key}
+     * exists withing the collection, {@code false} otherwise
      */
     public boolean search(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
@@ -51,7 +51,7 @@ class SortableList<T> extends ListBase<T> {
     }
 
     /**
-     * Iterates over the list, calling <tt>block</tt> on each element
+     * Iterates over the list, calling {@code block} on each element
      *
      * @param block the function to be called on each element
      */
