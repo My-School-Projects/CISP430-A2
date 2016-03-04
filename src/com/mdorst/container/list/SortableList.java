@@ -3,9 +3,9 @@ package com.mdorst.container.list;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
 
-/* SortableList
+/*
+ * SortableList
  * + search(T) : Boolean
  * + sort(Predicate)
  * + iterator() : ListIterator

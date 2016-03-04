@@ -1,36 +1,37 @@
 package com.mdorst.container.list;
 
-/**
- * Michael Dorst
- */
-
-import java.util.Comparator;
-import java.util.function.Consumer;
-
-/**
- * Queue is a ListBase
+/*
+ * Queue is a SortableList
  *
  * T : Generic
- *
- * Block : Function(T)
- * Predicate : (Function(T, T) : Boolean)
  *
  * Queue
  * + enqueue(T)
  * + dequeue() : T
- * + sort(Predicate)
- * + search(T, Predicate) : Boolean
- * + iterate(Block)
- * + iterator() : ListIterator
- * + constructor()
- * + constructor(ListBase)
  */
 
+/**
+ * This class extends SortableList, and provides methods to support
+ * a FIFO queue pattern.
+ *
+ * @param <T> the type of the elements held in this collection
+ */
 public class Queue<T> extends SortableList<T> {
+
+    /**
+     * Adds an element at the front of the collection
+     *
+     * @param obj the element to be added
+     */
     public void enqueue(T obj) {
         super.pushFront(obj);
     }
 
+    /**
+     * Removes an element from the back of the collection, returning it to the caller
+     *
+     * @return the removed element
+     */
     public T dequeue() {
         return super.popBack();
     }

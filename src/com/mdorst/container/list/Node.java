@@ -1,10 +1,6 @@
 package com.mdorst.container.list;
 
-/**
- * Michael Dorst
- */
-
-/**
+/*
  * T : Generic
  *
  * Node
@@ -20,6 +16,14 @@ package com.mdorst.container.list;
  * + delete()
  */
 
+/**
+ * This class provides the facility to implement a linked list.
+ * <p>
+ * It holds a generic data member, as well as two references to other {@code Node}'s,
+ * which serve as forward and backward references to the adjacent links in the list.
+ *
+ * @param <T> the type of the elements held in the linked list
+ */
 class Node<T> {
     public T data;
     public Node<T> next;
@@ -43,6 +47,12 @@ class Node<T> {
         data = obj;
     }
 
+    /**
+     * Inserts a new {@code Node} between this node and the node
+     * referenced by {@code next}
+     *
+     * @param node the node to be inserted
+     */
     public void insertNext(Node<T> node) {
         if (node == null) {
             throw new NullPointerException();
@@ -55,7 +65,13 @@ class Node<T> {
             temp.prev = node;
         }
     }
-    
+
+    /**
+     * Inserts a new {@code Node} between this node and the node
+     * referenced by {@code prev}
+     *
+     * @param node the node to be inserted
+     */
     public void insertPrev(Node<T> node) {
         if (node == null) {
             throw new NullPointerException();
@@ -68,7 +84,11 @@ class Node<T> {
             temp.next = node;
         }
     }
-    
+
+    /**
+     * Deletes this node, reorienting the {@code next} and {@code prev} nodes
+     * to reference each other, skipping over this one
+     */
     public void delete() {
         if (hasPrev()) {
             prev.next = next;

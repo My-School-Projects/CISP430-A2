@@ -1,15 +1,11 @@
 package com.mdorst.container.list;
 
-/**
- * Michael Dorst
- */
-
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
-/**
+/*
  * T : Generic
  *
  * Predicate : (Function(T, T) : Boolean)
@@ -32,6 +28,12 @@ import java.util.function.UnaryOperator;
  * - getNode(Integer) : Node
  */
 
+/**
+ * This class provides all of the methods common
+ * to the List, Stack and Queue classes.
+ *
+ * @param <T> the type of the elements held in this collection
+ */
 class ListBase<T> {
     protected Node<T> front, back;
     protected int size;
@@ -40,6 +42,11 @@ class ListBase<T> {
         return size;
     }
 
+    /**
+     * Adds an element to the front of the list
+     *
+     * @param obj the element to be added
+     */
     protected void pushFront(T obj) {
         if (size() == 0) {
             front = back = new Node<>(obj);
@@ -50,6 +57,11 @@ class ListBase<T> {
         size++;
     }
 
+    /**
+     * Adds an element to the back of the list
+     *
+     * @param obj the element to be added
+     */
     protected void pushBack(T obj) {
         if (size() == 0) {
             front = back = new Node<>(obj);
@@ -60,6 +72,11 @@ class ListBase<T> {
         size++;
     }
 
+    /**
+     * Removes an element from the front of the list, returning it to the caller
+     *
+     * @return the removed element
+     */
     protected T popFront() {
         Node<T> node = front;
         front = front.next;
@@ -67,6 +84,11 @@ class ListBase<T> {
         return node.data;
     }
 
+    /**
+     * Removes an element from the back of the list, returning it to the caller
+     *
+     * @return the removed element
+     */
     protected T popBack() {
         Node<T> node = back;
         back = back.prev;
@@ -74,6 +96,13 @@ class ListBase<T> {
         return node.data;
     }
 
+    /**
+     * Seek through the list until {@code index} is reached, then return
+     * the {@code Node} at that index
+     *
+     * @param index the index of the {@code Node} to be returned
+     * @return the {@code Node} located at {@code index}
+     */
     protected Node<T> getNode(int index) {
         if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
