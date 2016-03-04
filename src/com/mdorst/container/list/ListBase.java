@@ -23,24 +23,13 @@ import java.util.function.UnaryOperator;
  *
  * + size() : Integer
  * # insert(Node, Integer)
- * # get(Integer) : T
- * # delete(T)
  * # deleteAll(T)
  * # pushFront(T)
  * # pushBack(T)
  * # delete(Integer)
  * # popFront() : T
  * # popBack() : T
- * # search(T) : Boolean
- * # sort(Predicate)
- * # iterator() : ListIterator
- * # mutableIterator() : MutableListIterator
- * # iterate(Block)
- * # transform(UnaryOperator)
- * # search(T, Predicate) : Boolean
  * - getNode(Integer) : Node
- * + constructor()
- * + constructor(ListBase)
  */
 
 class ListBase<T> {
@@ -83,58 +72,6 @@ class ListBase<T> {
         back = back.prev;
         node.delete();
         return node.data;
-    }
-
-    protected ListIterator<T> iterator() {
-        Node<T> node = new Node<>();
-        node.next = front;
-        return new ListIterator<>(node);
-    }
-
-    protected boolean search(T key) {
-        for (Node<T> n = front; n.hasNext(); n = n.next) {
-            if (Objects.equals(key, n.data)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    protected void sort(Comparator<T> c) {
-        quickSort(c, front, back);
-    }
-
-    private void quickSort(Comparator<T> c, Node<T> start, Node<T> end) {
-        if (start == end) return;
-        Node<T> wall, n;
-        n = wall = start;
-        while (n != end) {
-            if (c.compare(n.data, end.data) < 1) {
-                n.swap(wall);
-                wall = wall.next;
-            }
-            n = n.next;
-        }
-        n.swap(wall);
-        if (start.next != end) {
-            if (wall.hasPrev() && wall != start) quickSort(c, start, wall.prev);
-            if (wall.hasNext() && wall != end) quickSort(c, wall.next, end);
-        }
-    }
-
-    protected void iterate(Consumer<T> block) {
-        Node<T> node = front;
-        do {
-            block.accept(node.data);
-        } while ((node = node.next) != null);
-    }
-
-    protected void transform(UnaryOperator<T> operator) {
-        Node<T> node = front;
-        for (int i = 0; i < size(); i++) {
-            node.data = operator.apply(node.data);
-            node = node.next;
-        }
     }
 
     protected Node<T> getNode(int index) {

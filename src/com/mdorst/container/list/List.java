@@ -20,35 +20,54 @@ import java.util.function.UnaryOperator;
  *
  * List
  * + insert(Node, Integer)
+ * + get(Integer) : T
+ * + delete(Integer)
+ * + delete(T)
+ * + deleteAll(T)
+ * + transform(UnaryOperator)
  * + pushFront(T)
  * + pushBack(T)
- * + delete(Integer)
  * + popFront() : T
  * + popBack() : T
- * + sort(Predicate)
- * + iterator() : ListIterator
- * + mutableIterator() : MutableListIterator
- * + iterate(Block)
- * + transform(UnaryOperator)
- * + search(T, Predicate) : Boolean
- * + constructor()
- * + constructor(ListBase)
  */
 
-public class List<T> extends ListBase<T> {
+public class List<T> extends SortableList<T> {
+
+    /**
+     * Insert <tt>obj</tt> into the collection
+     * at the position specified by <tt>index</tt>
+     * @param obj the element to be inserted
+     * @param index the index at which to insert the element
+     */
     public void insert(T obj, int index) {
         getNode(index).insertNext(new Node<T>(obj));
         size++;
     }
 
+    /**
+     * Return the element at the specified index
+     *
+     * @param index the index at which the desired element is located
+     * @return the desired element
+     */
     public T get(int index) {
         return getNode(index).data;
     }
 
+    /**
+     * Remove the element at the specified index
+     *
+     * @param index the index at which the element to be deleted is located
+     */
     public void delete(int index) {
         getNode(index).delete();
     }
 
+    /**
+     * Delete the first occurrence of <tt>key</tt> in the collection
+     *
+     * @param key the element to be removed
+     */
     public void delete(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
@@ -58,11 +77,30 @@ public class List<T> extends ListBase<T> {
         }
     }
 
+    /**
+     * Delete all occurrences of <tt>key</tt> in the collection
+     *
+     * @param key the element to be removed
+     */
     public void deleteAll(T key) {
         for (Node<T> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
                 n.delete();
             }
+        }
+    }
+
+    /**
+     * Iterates over the collection, calling <tt>operator</tt> on each element,
+     * and replacing each one with the value returned by <tt>operator</tt>
+     *
+     * @param operator the function to be called on each element
+     */
+    public void transform(UnaryOperator<T> operator) {
+        Node<T> node = front;
+        for (int i = 0; i < size(); i++) {
+            node.data = operator.apply(node.data);
+            node = node.next;
         }
     }
 
@@ -84,35 +122,5 @@ public class List<T> extends ListBase<T> {
     @Override
     public T popBack() {
         return super.popBack();
-    }
-
-    @Override
-    public ListIterator<T> iterator() {
-        return super.iterator();
-    }
-
-    @Override
-    public void iterate(Consumer<T> block) {
-        super.iterate(block);
-    }
-
-    @Override
-    public void transform(UnaryOperator<T> operator) {
-        super.transform(operator);
-    }
-
-    @Override
-    public boolean search(T key) {
-        return super.search(key);
-    }
-
-    @Override
-    public void sort(Comparator<T> c) {
-        super.sort(c);
-    }
-
-    @Override
-    public int size() {
-        return super.size();
     }
 }
