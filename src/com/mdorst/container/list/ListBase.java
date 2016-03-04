@@ -148,8 +148,8 @@ class ListBase<T> {
         }
         n.swap(wall);
         if (start.next != end) {
-            if (wall.hasPrev()) quickSort(c, start, wall.prev);
-            if (wall.hasNext()) quickSort(c, wall.next, end);
+            if (wall.hasPrev() && wall != start) quickSort(c, start, wall.prev);
+            if (wall.hasNext() && wall != end) quickSort(c, wall.next, end);
         }
     }
 
