@@ -13,12 +13,12 @@ import java.util.function.Consumer;
  */
 
 /**
- * This class extends ListBase, and provides all of the methods
+ * This class extends BasicList, and provides all of the methods
  * common to the List and Queue classes.
  *
  * @param <T> the type of the elements held in this collection
  */
-class SortableList<T> extends ListBase<T> {
+class SortableList<T> extends BasicList<T> {
     /**
      * Searches the collection for an element matching key
      *

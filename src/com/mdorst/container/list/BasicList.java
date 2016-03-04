@@ -12,7 +12,7 @@ import java.util.function.UnaryOperator;
  * Block : Function(T)
  * UnaryOperator : (Function(T) : T)
  *
- * ListBase
+ * BasicList
  * - front : Node
  * - back : Node
  * - size : Integer
@@ -34,7 +34,7 @@ import java.util.function.UnaryOperator;
  *
  * @param <T> the type of the elements held in this collection
  */
-class ListBase<T> {
+class BasicList<T> {
     protected Node<T> front, back;
     protected int size;
 
