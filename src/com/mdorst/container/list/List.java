@@ -27,9 +27,9 @@ import java.util.Objects;
  * This class extends SortableList, and provides facilities for use
  * as a list container.
  *
- * @param <T> the type of the elements held in this collection
+ * @param <E> the type of the elements held in this collection
  */
-public class List<T extends Comparable<? super T>> extends SortableList<T> {
+public class List<E extends Comparable<? super E>> extends SortableList<E> {
 
     /**
      * Insert {@code obj} into the collection
@@ -37,8 +37,8 @@ public class List<T extends Comparable<? super T>> extends SortableList<T> {
      * @param obj the element to be inserted
      * @param index the index at which to insert the element
      */
-    public void insert(T obj, int index) {
-        getNode(index).insertNext(new Node<T>(obj));
+    public void insert(E obj, int index) {
+        getNode(index).insertNext(new Node<E>(obj));
         size++;
     }
 
@@ -48,7 +48,7 @@ public class List<T extends Comparable<? super T>> extends SortableList<T> {
      * @param index the index at which the desired element is located
      * @return the desired element
      */
-    public T get(int index) {
+    public E get(int index) {
         return getNode(index).data;
     }
 
@@ -66,8 +66,8 @@ public class List<T extends Comparable<? super T>> extends SortableList<T> {
      *
      * @param key the element to be removed
      */
-    public void delete(T key) {
-        for (Node<T> n = front; n.hasNext(); n = n.next) {
+    public void delete(E key) {
+        for (Node<E> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
                 n.delete();
                 return;
@@ -80,8 +80,8 @@ public class List<T extends Comparable<? super T>> extends SortableList<T> {
      *
      * @param key the element to be removed
      */
-    public void deleteAll(T key) {
-        for (Node<T> n = front; n.hasNext(); n = n.next) {
+    public void deleteAll(E key) {
+        for (Node<E> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
                 n.delete();
             }
@@ -89,26 +89,26 @@ public class List<T extends Comparable<? super T>> extends SortableList<T> {
     }
 
     @Override
-    public void pushFront(T obj) {
+    public void pushFront(E obj) {
         super.pushFront(obj);
     }
 
     @Override
-    public void pushBack(T obj) {
+    public void pushBack(E obj) {
         super.pushBack(obj);
     }
 
     @Override
-    public T popFront() {
+    public E popFront() {
         return super.popFront();
     }
 
     @Override
-    public T popBack() {
+    public E popBack() {
         return super.popBack();
     }
 
-    public List(BasicList<T> other) {
+    public List(BasicList<E> other) {
         super(other);
     }
 

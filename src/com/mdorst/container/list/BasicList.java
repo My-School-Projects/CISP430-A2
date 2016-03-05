@@ -25,10 +25,10 @@ import java.util.Objects;
  * This class provides all of the methods common
  * to the List, Stack and Queue classes.
  *
- * @param <T> the type of the elements held in this collection
+ * @param <E> the type of the elements held in this collection
  */
-class BasicList<T> {
-    protected Node<T> front, back;
+class BasicList<E> {
+    protected Node<E> front, back;
     protected int size;
 
     public int size() {
@@ -38,7 +38,7 @@ class BasicList<T> {
     @Override
     public String toString() {
         String s = "[";
-        Node<T> n = front;
+        Node<E> n = front;
         while (n != null) {
             if (!Objects.equals(s, "[")) s += ", ";
             s += n.data.toString();
@@ -52,7 +52,7 @@ class BasicList<T> {
      *
      * @param obj the element to be added
      */
-    protected void pushFront(T obj) {
+    protected void pushFront(E obj) {
         if (size() == 0) {
             front = back = new Node<>(obj);
         } else {
@@ -67,7 +67,7 @@ class BasicList<T> {
      *
      * @param obj the element to be added
      */
-    protected void pushBack(T obj) {
+    protected void pushBack(E obj) {
         if (size() == 0) {
             front = back = new Node<>(obj);
         } else {
@@ -82,8 +82,8 @@ class BasicList<T> {
      *
      * @return the removed element
      */
-    protected T popFront() {
-        Node<T> node = front;
+    protected E popFront() {
+        Node<E> node = front;
         front = front.next;
         node.delete();
         size--;
@@ -95,8 +95,8 @@ class BasicList<T> {
      *
      * @return the removed element
      */
-    protected T popBack() {
-        Node<T> node = back;
+    protected E popBack() {
+        Node<E> node = back;
         back = back.prev;
         node.delete();
         size--;
@@ -110,11 +110,11 @@ class BasicList<T> {
      * @param index the index of the {@code Node} to be returned
      * @return the {@code Node} located at {@code index}
      */
-    protected Node<T> getNode(int index) {
+    protected Node<E> getNode(int index) {
         if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
         }
-        Node<T> node;
+        Node<E> node;
         if (index < size / 2) {
             node = front;
             for (int i = 0; i < index; i++) {
@@ -129,13 +129,13 @@ class BasicList<T> {
         return node;
     }
 
-    public BasicList(BasicList<T> other) {
+    public BasicList(BasicList<E> other) {
         if (other.size() > 0) {
-            Node<T> n = other.front;
-            Node<T> o = front = new Node<>(n.data);
+            Node<E> n = other.front;
+            Node<E> o = front = new Node<>(n.data);
             n = n.next;
             while (n != null) {
-                Node<T> p = new Node<>(n.data);
+                Node<E> p = new Node<>(n.data);
                 o.next = p;
                 p.prev = o;
                 o = p;

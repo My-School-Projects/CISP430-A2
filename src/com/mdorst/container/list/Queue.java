@@ -14,16 +14,16 @@ package com.mdorst.container.list;
  * This class extends SortableList, and provides methods to support
  * a FIFO queue pattern.
  *
- * @param <T> the type of the elements held in this collection
+ * @param <E> the type of the elements held in this collection
  */
-public class Queue<T extends Comparable<? super T>> extends SortableList<T> {
+public class Queue<E extends Comparable<? super E>> extends SortableList<E> {
 
     /**
      * Adds an element at the front of the collection
      *
      * @param obj the element to be added
      */
-    public void enqueue(T obj) {
+    public void enqueue(E obj) {
         super.pushBack(obj);
     }
 
@@ -32,11 +32,11 @@ public class Queue<T extends Comparable<? super T>> extends SortableList<T> {
      *
      * @return the removed element
      */
-    public T dequeue() {
+    public E dequeue() {
         return super.popFront();
     }
 
-    public Queue(BasicList<T> other) {
+    public Queue(BasicList<E> other) {
         super(other);
     }
 

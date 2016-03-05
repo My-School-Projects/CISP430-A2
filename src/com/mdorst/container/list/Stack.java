@@ -15,15 +15,15 @@ package com.mdorst.container.list;
  * This class extends BasicList, and provides methods to support
  * a LIFO stack pattern.
  *
- * @param <T> the type of the elements held in this collection
+ * @param <E> the type of the elements held in this collection
  */
-public class Stack<T> extends BasicList<T> {
+public class Stack<E> extends BasicList<E> {
     /**
      * Adds an element to the top of the stack
      *
      * @param obj the element to be added
      */
-    public void push(T obj) {
+    public void push(E obj) {
         super.pushFront(obj);
     }
 
@@ -32,7 +32,7 @@ public class Stack<T> extends BasicList<T> {
      *
      * @return the removed element
      */
-    public T pop() {
+    public E pop() {
         return super.popFront();
     }
 
@@ -41,11 +41,11 @@ public class Stack<T> extends BasicList<T> {
      *
      * @return the element at the top of the stack
      */
-    public T top() {
+    public E top() {
         return front.data;
     }
 
-    public Stack(BasicList<T> other) {
+    public Stack(BasicList<E> other) {
         super(other);
     }
 

@@ -22,12 +22,12 @@ package com.mdorst.container.list;
  * It holds a generic data member, as well as two references to other {@code Node}'s,
  * which serve as forward and backward references to the adjacent links in the list.
  *
- * @param <T> the type of the elements held in the linked list
+ * @param <E> the type of the elements held in the linked list
  */
-class Node<T> {
-    public T data;
-    public Node<T> next;
-    public Node<T> prev;
+class Node<E> {
+    public E data;
+    public Node<E> next;
+    public Node<E> prev;
 
     public boolean hasNext() {
         return next != null;
@@ -36,14 +36,14 @@ class Node<T> {
         return prev != null;
     }
 
-    public void swap(Node<T> node) {
-        T temp = this.data;
+    public void swap(Node<E> node) {
+        E temp = this.data;
         this.data = node.data;
         node.data = temp;
     }
 
     public Node() {}
-    public Node(T obj) {
+    public Node(E obj) {
         data = obj;
     }
 
@@ -53,11 +53,11 @@ class Node<T> {
      *
      * @param node the node to be inserted
      */
-    public void insertNext(Node<T> node) {
+    public void insertNext(Node<E> node) {
         if (node == null) {
             throw new NullPointerException();
         }
-        Node<T> temp = this.next;
+        Node<E> temp = this.next;
         this.next = node;
         node.next = temp;
         node.prev = this;
@@ -72,11 +72,11 @@ class Node<T> {
      *
      * @param node the node to be inserted
      */
-    public void insertPrev(Node<T> node) {
+    public void insertPrev(Node<E> node) {
         if (node == null) {
             throw new NullPointerException();
         }
-        Node<T> temp = this.prev;
+        Node<E> temp = this.prev;
         this.prev = node;
         node.prev = temp;
         node.next = this;

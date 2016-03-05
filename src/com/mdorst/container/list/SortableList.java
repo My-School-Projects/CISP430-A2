@@ -17,9 +17,9 @@ import java.util.Objects;
  * This class extends BasicList, and provides all of the methods
  * common to the List and Queue classes.
  *
- * @param <T> the type of the elements held in this collection
+ * @param <E> the type of the elements held in this collection
  */
-class SortableList<T extends Comparable<? super T>> extends BasicList<T> implements Iterable<T> {
+class SortableList<E extends Comparable<? super E>> extends BasicList<E> implements Iterable<E> {
     /**
      * Searches the collection for an element matching key
      *
@@ -27,8 +27,8 @@ class SortableList<T extends Comparable<? super T>> extends BasicList<T> impleme
      * @return {@code true} if an element matching {@code key}
      * exists withing the collection, {@code false} otherwise
      */
-    public boolean search(T key) {
-        for (Node<T> n = front; n.hasNext(); n = n.next) {
+    public boolean search(E key) {
+        for (Node<E> n = front; n.hasNext(); n = n.next) {
             if (Objects.equals(key, n.data)) {
                 return true;
             }
@@ -41,19 +41,19 @@ class SortableList<T extends Comparable<? super T>> extends BasicList<T> impleme
      *
      * @param c the comparator used to decide sorting order
      */
-    public void sort(Comparator<T> c) {
+    public void sort(Comparator<E> c) {
         quickSort(c, front, back);
     }
 
-    public Iterator<T> iterator() {
-        Node<T> node = new Node<>();
+    public Iterator<E> iterator() {
+        Node<E> node = new Node<>();
         node.next = front;
         return new Iterator<>(node);
     }
 
-    private void quickSort(Comparator<T> c, Node<T> start, Node<T> end) {
+    private void quickSort(Comparator<E> c, Node<E> start, Node<E> end) {
         if (start == end) return;
-        Node<T> wall, n;
+        Node<E> wall, n;
         n = wall = start;
         while (n != end) {
             if (c.compare(n.data, end.data) < 1) {
@@ -69,7 +69,7 @@ class SortableList<T extends Comparable<? super T>> extends BasicList<T> impleme
         }
     }
 
-    public SortableList(BasicList<T> other) {
+    public SortableList(BasicList<E> other) {
         super(other);
     }
 
