@@ -1,7 +1,6 @@
 package com.mdorst.container.list;
 
 import java.util.Objects;
-import java.util.function.UnaryOperator;
 
 /*
  * List is a SortableList
@@ -18,7 +17,6 @@ import java.util.function.UnaryOperator;
  * + delete(Integer)
  * + delete(T)
  * + deleteAll(T)
- * + transform(UnaryOperator)
  * + pushFront(T)
  * + pushBack(T)
  * + popFront() : T
@@ -87,20 +85,6 @@ public class List<T> extends SortableList<T> {
             if (Objects.equals(key, n.data)) {
                 n.delete();
             }
-        }
-    }
-
-    /**
-     * Iterates over the collection, calling {@code operator} on each element,
-     * and replacing each one with the value returned by {@code operator}
-     *
-     * @param operator the function to be called on each element
-     */
-    public void transform(UnaryOperator<T> operator) {
-        Node<T> node = front;
-        for (int i = 0; i < size(); i++) {
-            node.data = operator.apply(node.data);
-            node = node.next;
         }
     }
 

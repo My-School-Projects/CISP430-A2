@@ -2,14 +2,15 @@ package com.mdorst.container.list;
 
 import java.util.Comparator;
 import java.util.Objects;
-import java.util.function.Consumer;
 
 /*
  * SortableList
+ *
+ * Comparator : (Function(T, T) : Boolean)
+ *
  * + search(T) : Boolean
- * + sort(Predicate)
+ * + sort(Comparator)
  * + iterator() : Iterator
- * + iterate(Function)
  */
 
 /**
@@ -18,7 +19,7 @@ import java.util.function.Consumer;
  *
  * @param <T> the type of the elements held in this collection
  */
-class SortableList<T> extends BasicList<T> {
+class SortableList<T> extends BasicList<T> implements Iterable<T> {
     /**
      * Searches the collection for an element matching key
      *
@@ -48,18 +49,6 @@ class SortableList<T> extends BasicList<T> {
         Node<T> node = new Node<>();
         node.next = front;
         return new Iterator<>(node);
-    }
-
-    /**
-     * Iterates over the list, calling {@code block} on each element
-     *
-     * @param block the function to be called on each element
-     */
-    public void iterate(Consumer<T> block) {
-        Node<T> node = front;
-        do {
-            block.accept(node.data);
-        } while ((node = node.next) != null);
     }
 
     private void quickSort(Comparator<T> c, Node<T> start, Node<T> end) {

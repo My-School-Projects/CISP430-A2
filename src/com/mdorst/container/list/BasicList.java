@@ -3,10 +3,6 @@ package com.mdorst.container.list;
 /*
  * T : Generic
  *
- * Predicate : (Function(T, T) : Boolean)
- * Block : Function(T)
- * UnaryOperator : (Function(T) : T)
- *
  * BasicList
  * - front : Node
  * - back : Node
@@ -23,6 +19,8 @@ package com.mdorst.container.list;
  * - getNode(Integer) : Node
  */
 
+import java.util.Objects;
+
 /**
  * This class provides all of the methods common
  * to the List, Stack and Queue classes.
@@ -35,6 +33,18 @@ class BasicList<T> {
 
     public int size() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        String s = "[";
+        Node<T> n = front;
+        while (n != null) {
+            if (!Objects.equals(s, "[")) s += ", ";
+            s += n.data.toString();
+            n = n.next;
+        }
+        return s + "]";
     }
 
     /**
@@ -76,6 +86,7 @@ class BasicList<T> {
         Node<T> node = front;
         front = front.next;
         node.delete();
+        size--;
         return node.data;
     }
 
@@ -88,6 +99,7 @@ class BasicList<T> {
         Node<T> node = back;
         back = back.prev;
         node.delete();
+        size--;
         return node.data;
     }
 

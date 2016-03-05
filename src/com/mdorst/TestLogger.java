@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class TestLogger {
     private List<String> log;
-    PrintStream stream;
+    private PrintStream stream;
 
     public void assertTrue(boolean assertion, String error) {
         if (assertion) {
@@ -29,12 +29,20 @@ public class TestLogger {
         assertTrue(assertion, "Invalid assertion");
     }
 
+    public void assertFalse(boolean assertion, String error) {
+        assertTrue(!assertion, error);
+    }
+
+    public void assertFalse(boolean assertion) {
+        assertTrue(!assertion);
+    }
+
     public void assertEqual(Object o1, Object o2, String error) {
         assertTrue(Objects.equals(o1, o2), error);
     }
 
     public void assertEqual(Object o1, Object o2) {
-        assertTrue(Objects.equals(o1, o2));
+        assertTrue(Objects.equals(o1, o2), o1 + " != " + o2);
     }
 
     /**

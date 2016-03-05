@@ -24,7 +24,6 @@ public class Queue<T> extends SortableList<T> {
      * @param obj the element to be added
      */
     public void enqueue(T obj) {
-        super.pushFront(obj);
         super.pushBack(obj);
     }
 
@@ -34,7 +33,7 @@ public class Queue<T> extends SortableList<T> {
      * @return the removed element
      */
     public T dequeue() {
-        return super.popBack();
+        return super.popFront();
     }
 
     public Queue(BasicList<T> other) {
