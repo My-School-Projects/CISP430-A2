@@ -17,6 +17,7 @@ package com.mdorst.container.list;
  */
 class Iterator<T> implements java.util.Iterator<T> {
     private Node<T> node;
+    private Node<T> head;
 
     /**
      * Move the iterator forward one element, and get that element
@@ -36,7 +37,7 @@ class Iterator<T> implements java.util.Iterator<T> {
      */
     @Override
     public boolean hasNext() {
-        return node.next != null;
+        return node.next != head;
     }
 
     /**
@@ -57,6 +58,6 @@ class Iterator<T> implements java.util.Iterator<T> {
      *             the list's head node
      */
     protected Iterator(Node<T> node) {
-        this.node = node;
+        this.node = head = node;
     }
 }

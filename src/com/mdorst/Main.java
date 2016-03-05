@@ -13,6 +13,7 @@ public class Main {
         list.add(5);
         test.assertEqual(list.size(), 1, "list.size() should be 1 after calling add()");
         test.assertTrue(list.contains(5), "list.contains(5) should be true after calling add(5)");
+        test.assertTrue(list.containsAll(list), "list.containsAll(list) should always be true");
         test.done();
     }
 }
