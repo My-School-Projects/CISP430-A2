@@ -9,6 +9,10 @@ public class ListCollection<E> implements Collection<E> {
     protected Node<E> head;
     protected int size;
 
+    public ListCollection() {
+        head = new Node<>();
+    }
+
     @Override
     public int size() {
         return size;
@@ -21,12 +25,29 @@ public class ListCollection<E> implements Collection<E> {
 
     @Override
     public boolean contains(Object o) {
-        for (Node<E> n = head.next; n != head; n = n.next) {
-            if (Objects.equals(o, n.data)) {
-                return true;
+        if (!isEmpty()) {
+            for (Node<E> n = head.next; n != head; n = n.next) {
+                if (Objects.equals(o, n.data)) {
+                    return true;
+                }
             }
         }
         return false;
+    }
+
+    /**
+     * Returns true if this collection contains all of the elements in the specified collection.
+     *
+     * @param c collection to be checked for containment in this collection
+     * @return {@code true} if this collection contains all of the elements in the specified collection
+     */
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        for (Object o : c) {
+            if (!contains(o))
+                return false;
+        }
+        return true;
     }
 
     @Override
@@ -68,10 +89,16 @@ public class ListCollection<E> implements Collection<E> {
     @Override
     public boolean add(E e) {
         Node<E> n = new Node<>(e);
-        n.next = head;
-        n.prev = head.prev;
-        head.prev.next = n;
+        if (isEmpty()) {
+            head.next = n;
+            n.prev = head;
+        } else {
+            head.prev.next = n;
+            n.prev = head.prev;
+        }
         head.prev = n;
+        n.next = head;
+        size++;
         return true;
     }
 
@@ -133,21 +160,6 @@ public class ListCollection<E> implements Collection<E> {
             }
         }
         return changed;
-    }
-
-    /**
-     * Returns true if this collection contains all of the elements in the specified collection.
-     *
-     * @param c collection to be checked for containment in this collection
-     * @return {@code true} if this collection contains all of the elements in the specified collection
-     */
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        for (Object o : c) {
-            if (!contains(o))
-                return false;
-        }
-        return true;
     }
 
     /**
