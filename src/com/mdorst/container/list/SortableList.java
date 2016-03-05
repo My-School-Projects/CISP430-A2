@@ -79,4 +79,10 @@ class SortableList<T> extends BasicList<T> {
             if (wall.hasNext() && wall != end) quickSort(c, wall.next, end);
         }
     }
+
+    SortableList(BasicList<T> other) {
+        super(other);
+    }
+
+    SortableList() {}
 }

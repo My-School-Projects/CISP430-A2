@@ -25,6 +25,7 @@ public class Queue<T> extends SortableList<T> {
      */
     public void enqueue(T obj) {
         super.pushFront(obj);
+        super.pushBack(obj);
     }
 
     /**
@@ -35,4 +36,10 @@ public class Queue<T> extends SortableList<T> {
     public T dequeue() {
         return super.popBack();
     }
+
+    Queue(BasicList<T> other) {
+        super(other);
+    }
+
+    Queue() {}
 }

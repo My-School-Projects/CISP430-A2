@@ -1,10 +1,5 @@
 package com.mdorst.container.list;
 
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-
 /*
  * T : Generic
  *
@@ -121,4 +116,21 @@ class BasicList<T> {
         }
         return node;
     }
+
+    BasicList(BasicList<T> other) {
+        if (other.size() > 0) {
+            Node<T> n = other.front;
+            Node<T> o = front = new Node<>(n.data);
+            n = n.next;
+            while (n != null) {
+                Node<T> p = new Node<>(n.data);
+                o.next = p;
+                p.prev = o;
+                o = p;
+            }
+            back = o;
+        }
+    }
+
+    BasicList() {}
 }

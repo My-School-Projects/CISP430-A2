@@ -44,4 +44,10 @@ public class Stack<T> extends BasicList<T> {
     public T top() {
         return front.data;
     }
+
+    Stack(BasicList<T> other) {
+        super(other);
+    }
+
+    Stack() {}
 }
