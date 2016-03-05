@@ -10,10 +10,13 @@ public class Main {
         test.assertEqual(list.size(), 0, "list.size() should be 0 after construction");
         test.assertTrue(list.isEmpty(), "list.isEmpty() should be true after construction");
         test.assertFalse(list.contains(5), "list.contains(5) should be false after construction");
+        test.assertTrue(list.containsAll(list), "list.containsAll(list) should always be true");
+        test.assertFalse(list.iterator().hasNext(), "list.iterator.hasNext() should be false for an empty list");
         list.add(5);
         test.assertEqual(list.size(), 1, "list.size() should be 1 after calling add()");
         test.assertTrue(list.contains(5), "list.contains(5) should be true after calling add(5)");
         test.assertTrue(list.containsAll(list), "list.containsAll(list) should always be true");
+        test.assertTrue(list.iterator().hasNext(), "list.iterator.hasNext() should be true for a non-empty list");
         test.done();
     }
 }
