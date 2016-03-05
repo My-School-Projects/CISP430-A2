@@ -19,7 +19,7 @@ import java.util.Objects;
  *
  * @param <T> the type of the elements held in this collection
  */
-class SortableList<T> extends BasicList<T> implements Iterable<T> {
+class SortableList<T extends Comparable<? super T>> extends BasicList<T> implements Iterable<T> {
     /**
      * Searches the collection for an element matching key
      *

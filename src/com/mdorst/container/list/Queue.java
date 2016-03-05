@@ -16,7 +16,7 @@ package com.mdorst.container.list;
  *
  * @param <T> the type of the elements held in this collection
  */
-public class Queue<T> extends SortableList<T> {
+public class Queue<T extends Comparable<? super T>> extends SortableList<T> {
 
     /**
      * Adds an element at the front of the collection

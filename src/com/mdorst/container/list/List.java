@@ -29,7 +29,7 @@ import java.util.Objects;
  *
  * @param <T> the type of the elements held in this collection
  */
-public class List<T> extends SortableList<T> {
+public class List<T extends Comparable<? super T>> extends SortableList<T> {
 
     /**
      * Insert {@code obj} into the collection
