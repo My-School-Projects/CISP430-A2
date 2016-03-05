@@ -127,6 +127,7 @@ class BasicList<T> {
                 o.next = p;
                 p.prev = o;
                 o = p;
+                n = n.next;
             }
             back = o;
         }
