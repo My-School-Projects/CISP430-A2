@@ -3,8 +3,6 @@ package com.mdorst;
 import com.mdorst.container.list.List;
 import com.mdorst.container.list.Queue;
 
-import java.util.Iterator;
-
 public class Main {
 
     public static void main(String[] args) {
