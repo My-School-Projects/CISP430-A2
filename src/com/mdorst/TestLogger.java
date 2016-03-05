@@ -41,7 +41,7 @@ public class TestLogger {
      * Prints "Passed!" or "Failed." depending on weather there are
      * errors or not, and displays any error messages
      */
-    public void finalize() {
+    public void done() {
         stream.println();
         if (log.isEmpty()) {
             stream.println("Passed!");
