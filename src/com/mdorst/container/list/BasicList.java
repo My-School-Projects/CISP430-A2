@@ -117,7 +117,7 @@ class BasicList<T> {
         return node;
     }
 
-    BasicList(BasicList<T> other) {
+    public BasicList(BasicList<T> other) {
         if (other.size() > 0) {
             Node<T> n = other.front;
             Node<T> o = front = new Node<>(n.data);
@@ -132,5 +132,5 @@ class BasicList<T> {
         }
     }
 
-    BasicList() {}
+    public BasicList() {}
 }

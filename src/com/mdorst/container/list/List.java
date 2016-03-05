@@ -124,9 +124,9 @@ public class List<T> extends SortableList<T> {
         return super.popBack();
     }
 
-    List(BasicList<T> other) {
+    public List(BasicList<T> other) {
         super(other);
     }
 
-    List() {}
+    public List() {}
 }

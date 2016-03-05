@@ -80,9 +80,9 @@ class SortableList<T> extends BasicList<T> {
         }
     }
 
-    SortableList(BasicList<T> other) {
+    public SortableList(BasicList<T> other) {
         super(other);
     }
 
-    SortableList() {}
+    public SortableList() {}
 }

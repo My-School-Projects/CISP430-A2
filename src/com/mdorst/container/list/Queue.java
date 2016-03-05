@@ -37,9 +37,9 @@ public class Queue<T> extends SortableList<T> {
         return super.popBack();
     }
 
-    Queue(BasicList<T> other) {
+    public Queue(BasicList<T> other) {
         super(other);
     }
 
-    Queue() {}
+    public Queue() {}
 }
