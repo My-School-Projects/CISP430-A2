@@ -196,4 +196,14 @@ public class ListCollection<E> implements Collection<E> {
         head.next = null;
         head.prev = null;
     }
+
+    @Override
+    public String toString() {
+        String s = "[";
+        for (Node<E> n = head.next; n != head; n = n.next) {
+            if (!Objects.equals(s, "[")) s += ", ";
+            s += n.data.toString();
+        }
+        return s + "]";
+    }
 }
