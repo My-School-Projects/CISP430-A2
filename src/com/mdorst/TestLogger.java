@@ -9,7 +9,7 @@ import java.util.Objects;
  * This class serves as a simple testing framework.
  * <p>
  * Calls to {@code assert*} are tracked, and error messages are stored
- * for a later call to {@code finalize()}, which will either print
+ * for a later call to {@code done()}, which will either print
  * "Passed!" or "Failed." and a list of failed assertions if applicable.
  */
 public class TestLogger {
