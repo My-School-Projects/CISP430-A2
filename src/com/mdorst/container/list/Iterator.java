@@ -13,11 +13,11 @@ package com.mdorst.container.list;
  * This class extends java.util.Iterator, and provides facilities
  * for iterating over a linked list.
  *
- * @param <T>
+ * @param <E>
  */
-class Iterator<T> implements java.util.Iterator<T> {
-    private Node<T> node;
-    private Node<T> head;
+class Iterator<E> implements java.util.Iterator<E> {
+    private Node<E> node;
+    private Node<E> head;
 
     /**
      * Move the iterator forward one element, and get that element
@@ -25,7 +25,7 @@ class Iterator<T> implements java.util.Iterator<T> {
      * @return the next element in the collection
      */
     @Override
-    public T next() {
+    public E next() {
         return (node = node.next).data;
     }
 
@@ -57,7 +57,7 @@ class Iterator<T> implements java.util.Iterator<T> {
      * @param node a {@code Node} who's {@code next} attribute references
      *             the list's head node
      */
-    protected Iterator(Node<T> node) {
+    protected Iterator(Node<E> node) {
         this.node = head = node;
     }
 }
