@@ -26,7 +26,7 @@ class Iterator<E> implements java.util.Iterator<E> {
      */
     @Override
     public E next() {
-        return (node = node.next).data;
+        return hasNext() ? (node = node.next).data : null;
     }
 
     /**
