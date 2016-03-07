@@ -20,6 +20,7 @@ public class Main {
         test.assertEqual(list.size(), 1, "list.size() should be 1 after calling add() once");
         test.assertFalse(list.isEmpty(), "list.isEmpty() should be false after construction");
         test.assertTrue(list.contains(5), "list.contains(5) should be true after calling add(5)");
+        test.assertFalse(list.contains(2), "list.contains(2) should be false before calling add(2)");
         test.assertTrue(list.containsAll(list), "list.containsAll(list) should always be true");
         test.assertTrue(list.iterator().hasNext(), "list.iterator().hasNext() should be true for a non-empty list");
         test.assertEqual(list.iterator().next(), 5, "list.iterator().next() should be 5");
@@ -27,8 +28,8 @@ public class Main {
         test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[] {5}), "list.toArray should == {5}");
         list.add(2);
         test.assertEqual(list.size(), 2, "list.size() should be 2 after calling add() twice");
-        test.assertTrue(list.contains(5), "list.contains(5) should be true");
-        test.assertTrue(list.contains(2), "list.contains(2) should be true");
+        test.assertTrue(list.contains(5), "list.contains(5) should be true after calling add(5)");
+        test.assertTrue(list.contains(2), "list.contains(2) should be true after calling add(2)");
         test.assertTrue(list.containsAll(list), "list.containsAll(list) should always be true");
         test.assertTrue(list.iterator().hasNext(), "list.iterator().hasNext() should be true for a non-empty list");
         Iterator<Integer> iter = list.iterator();
