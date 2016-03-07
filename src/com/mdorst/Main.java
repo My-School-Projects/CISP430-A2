@@ -42,6 +42,26 @@ public class Main {
         test.assertFalse(iter.hasNext(), "iter.hasNext() should be false");
         test.assertEqual(list.toArray().length, 2, "list.toArray() should return an array of length 2");
         test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[] {5, 2}), "list.toArray should == {5, 2}");
+        {
+            ListCollection<Integer> lc2 = new ListCollection<>();
+            lc2.add(11);
+            lc2.add(3);
+            lc2.add(115);
+            list.addAll(lc2);
+        }
+
+        test.assertTrue(list.contains(11), "list.contains(11) should be true after call to addAll()");
+        test.assertTrue(list.contains(3), "list.contains(3) should be true after call to addAll()");
+        test.assertTrue(list.contains(115), "list.contains(115) should be true after call to addAll()");
+        iter = list.iterator();
+        test.assertEqual(iter.next(), 5, "iter.next() should be 5");
+        test.assertEqual(iter.next(), 2, "iter.next() should be 2");
+        test.assertEqual(iter.next(), 11, "iter.next() should be 11");
+        test.assertEqual(iter.next(), 3, "iter.next() should be 3");
+        test.assertTrue(iter.hasNext(), "iter.hasNext() should be true");
+        test.assertEqual(iter.next(), 115, "iter.next() should be 115");
+        test.assertFalse(iter.hasNext(), "iter.hasNext() should be false");
+        test.assertEqual(iter.next(), null, "iter.next() should be null");
         test.done();
     }
 }
