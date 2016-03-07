@@ -17,12 +17,18 @@ public class TestLogger {
     private PrintStream stream;
     private int testCount;
 
+    private class Color {
+        public static final String RED = "\u001B[31m";
+        public static final String GREEN = "\u001B[32m";
+        public static final String RESET = "\u001B[0m";
+    }
+
     public void assertTrue(boolean assertion, String error) {
         if (assertion) {
-            stream.print(".");
+            stream.print(Color.GREEN + "." + Color.RESET);
         } else {
-            stream.print("F");
-            log.add(error);
+            stream.print(Color.RED + "F" + Color.RESET);
+            log.add(Color.RED + error + Color.RESET);
         }
         testCount++;
     }
@@ -51,7 +57,8 @@ public class TestLogger {
      * Prints "n passed, n failed", and displays any failed test messages
      */
     public void done() {
-        stream.println("\n" + (testCount - log.size()) + " passed, " + log.size() + " failed.");
+        stream.println("\n" + Color.GREEN + (testCount - log.size()) + " passed, " +
+                Color.RED + log.size() + " failed." + Color.RESET);
         log.forEach(stream::println);
     }
 
