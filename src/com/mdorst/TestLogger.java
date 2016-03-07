@@ -15,6 +15,7 @@ import java.util.Objects;
 public class TestLogger {
     private List<String> log;
     private PrintStream stream;
+    private int testCount;
 
     public void assertTrue(boolean assertion, String error) {
         if (assertion) {
@@ -23,6 +24,7 @@ public class TestLogger {
             stream.print("F");
             log.add(error);
         }
+        testCount++;
     }
 
     public void assertTrue(boolean assertion) {
@@ -46,16 +48,10 @@ public class TestLogger {
     }
 
     /**
-     * Prints "Passed!" or "Failed." depending on weather there are
-     * errors or not, and displays any error messages
+     * Prints "n passed, n failed", and displays any failed test messages
      */
     public void done() {
-        stream.println();
-        if (log.isEmpty()) {
-            stream.println("Passed!");
-        } else {
-            stream.println("Failed.");
-        }
+        stream.println("\n" + (testCount - log.size()) + " passed, " + log.size() + " failed.");
         log.forEach(stream::println);
     }
 
