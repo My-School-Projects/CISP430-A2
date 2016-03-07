@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Main {
 
     public static void main(String[] args) {
-        TestLogger test = new TestLogger();
+        TestRunner test = new TestRunner();
         ListCollection<Integer> list = new ListCollection<>();
         test.assertEqual(list.size(), 0, "list.size() should be 0 after construction");
         test.assertTrue(list.isEmpty(), "list.isEmpty() should be true after construction");

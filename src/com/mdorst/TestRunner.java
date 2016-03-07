@@ -12,7 +12,7 @@ import java.util.Objects;
  * for a later call to {@code done()}, which will either print
  * "Passed!" or "Failed." and a list of failed assertions if applicable.
  */
-public class TestLogger {
+public class TestRunner {
     private List<String> log;
     private PrintStream stream;
     private int testCount;
@@ -62,12 +62,12 @@ public class TestLogger {
         log.forEach(stream::println);
     }
 
-    public TestLogger(PrintStream ps) {
+    public TestRunner(PrintStream ps) {
         stream = ps;
         log = new LinkedList<>();
     }
 
-    public TestLogger() {
+    public TestRunner() {
         this(System.out);
     }
 }
