@@ -17,14 +17,14 @@ package com.mdorst.container.list;
  *
  * @param <E> the type of the elements held in this collection
  */
-public class Stack<E> extends BasicList<E> {
+public class Stack<E> extends ListCollection<E> {
     /**
      * Adds an element to the top of the stack
      *
      * @param obj the element to be added
      */
     public void push(E obj) {
-        super.pushFront(obj);
+        super.add(obj);
     }
 
     /**
@@ -33,7 +33,9 @@ public class Stack<E> extends BasicList<E> {
      * @return the removed element
      */
     public E pop() {
-        return super.popFront();
+        E value = head.prev.data;
+        head.prev.delete();
+        return value;
     }
 
     /**
@@ -42,10 +44,10 @@ public class Stack<E> extends BasicList<E> {
      * @return the element at the top of the stack
      */
     public E top() {
-        return front.data;
+        return head.prev.data;
     }
 
-    public Stack(BasicList<E> other) {
+    public Stack(ListCollection<E> other) {
         super(other);
     }
 

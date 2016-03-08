@@ -16,7 +16,7 @@ package com.mdorst.container.list;
  *
  * @param <E> the type of the elements held in this collection
  */
-public class Queue<E extends Comparable<? super E>> extends SortableList<E> {
+public class Queue<E extends Comparable<? super E>> extends ListCollection<E> {
 
     /**
      * Adds an element at the front of the collection
@@ -24,7 +24,7 @@ public class Queue<E extends Comparable<? super E>> extends SortableList<E> {
      * @param obj the element to be added
      */
     public void enqueue(E obj) {
-        super.pushBack(obj);
+        super.add(obj);
     }
 
     /**
@@ -33,10 +33,12 @@ public class Queue<E extends Comparable<? super E>> extends SortableList<E> {
      * @return the removed element
      */
     public E dequeue() {
-        return super.popFront();
+        E value = head.next.data;
+        head.next.delete();
+        return value;
     }
 
-    public Queue(BasicList<E> other) {
+    public Queue(ListCollection<E> other) {
         super(other);
     }
 

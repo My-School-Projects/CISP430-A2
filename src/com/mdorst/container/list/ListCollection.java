@@ -2,8 +2,7 @@ package com.mdorst.container.list;
 
 
 import java.lang.reflect.Array;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 public class ListCollection<E> implements Collection<E> {
     protected Node<E> head;
@@ -12,6 +11,13 @@ public class ListCollection<E> implements Collection<E> {
     public ListCollection() {
         head = new Node<>();
         head.next = head.prev = head;
+    }
+
+    public ListCollection(ListCollection<E> c) {
+        this();
+        for(E e : c) {
+            add(e);
+        }
     }
 
     @Override
