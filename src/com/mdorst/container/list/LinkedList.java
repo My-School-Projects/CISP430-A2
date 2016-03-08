@@ -4,16 +4,16 @@ package com.mdorst.container.list;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class ListCollection<E> implements Collection<E> {
+public class LinkedList<E> implements Collection<E> {
     protected Node<E> head;
     protected int size;
 
-    public ListCollection() {
+    public LinkedList() {
         head = new Node<>();
         head.next = head.prev = head;
     }
 
-    public ListCollection(ListCollection<E> c) {
+    public LinkedList(LinkedList<E> c) {
         this();
         for(E e : c) {
             add(e);

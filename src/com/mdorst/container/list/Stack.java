@@ -17,7 +17,7 @@ package com.mdorst.container.list;
  *
  * @param <E> the type of the elements held in this collection
  */
-public class Stack<E> extends ListCollection<E> {
+public class Stack<E> extends LinkedList<E> {
     /**
      * Adds an element to the top of the stack
      *
@@ -47,7 +47,7 @@ public class Stack<E> extends ListCollection<E> {
         return head.prev.data;
     }
 
-    public Stack(ListCollection<E> other) {
+    public Stack(LinkedList<E> other) {
         super(other);
     }
 

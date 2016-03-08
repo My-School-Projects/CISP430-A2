@@ -16,7 +16,7 @@ package com.mdorst.container.list;
  *
  * @param <E> the type of the elements held in this collection
  */
-public class Queue<E extends Comparable<? super E>> extends ListCollection<E> {
+public class Queue<E extends Comparable<? super E>> extends LinkedList<E> {
 
     /**
      * Adds an element at the front of the collection
@@ -38,7 +38,7 @@ public class Queue<E extends Comparable<? super E>> extends ListCollection<E> {
         return value;
     }
 
-    public Queue(ListCollection<E> other) {
+    public Queue(LinkedList<E> other) {
         super(other);
     }
 
