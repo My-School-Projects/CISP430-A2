@@ -64,7 +64,8 @@ public class TestRunner {
         if (Objects.equals(o1, o2)) {
             expect(true, expression + " == " + o2);
         } else {
-            expect(false, expression + " != " + o2);
+            expect(false, expression + " != " + o2 +
+                    ", " + expression + " == " + o1);
         }
     }
 
