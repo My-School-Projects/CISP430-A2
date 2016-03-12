@@ -31,7 +31,7 @@ public class TestRunner {
         public static final String RESET = "\u001B[0m";
     }
 
-    public void assertTrue(boolean assertion, String expectation) {
+    public void expect(boolean assertion, String expectation) {
         if (assertion) {
             stream.print(Color.GREEN + "." + Color.RESET);
             if (verbose)
@@ -44,27 +44,28 @@ public class TestRunner {
         }
     }
 
-    public void assertTrue(boolean assertion) {
-        assertTrue(assertion, "Invalid assertion");
-    }
-
-    public void assertFalse(boolean assertion, String expectation) {
-        assertTrue(!assertion, expectation);
-    }
-
-    public void assertFalse(boolean assertion) {
-        assertTrue(!assertion);
-    }
-
-    public void assertEqual(Object o1, Object o2, String expectation) {
-        assertTrue(Objects.equals(o1, o2), expectation);
-    }
-
-    public void assertEqual(Object o1, Object o2) {
-        if (Objects.equals(o1, o2)) {
-            assertTrue(true, o1 + " == " + o2);
+    public void assertTrue(boolean assertion, String expression) {
+        if (assertion) {
+            expect(true, expression + " == true");
         } else {
-            assertTrue(false, o1 + " != " + o2);
+            expect(false, expression + " != true");
+        }
+    }
+
+    public void assertFalse(boolean assertion, String expression) {
+        if (!assertion) {
+            expect(true, expression + " == false");
+        } else {
+            expect(false, expression + " != false");
+        }
+    }
+
+    public void assertEqual(Object o1, Object o2, String expression) {
+        if (Objects.equals(o1, o2)) {
+            expect(true, expression + " == " + o2);
+        } else {
+
+            expect(true, expression + " != " + o2);
         }
     }
 
