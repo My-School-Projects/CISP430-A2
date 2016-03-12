@@ -130,6 +130,7 @@ public class LinkedList<E> implements Collection<E> {
              */
             if (o == null ? n.data == null : o.equals(n.data)) {
                 n.delete();
+                size--;
                 return true;
             }
         }

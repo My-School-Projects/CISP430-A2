@@ -35,6 +35,7 @@ public class Queue<E extends Comparable<? super E>> extends LinkedList<E> {
     public E dequeue() {
         E value = head.next.data;
         head.next.delete();
+        if (size > 0) size--;
         return value;
     }
 

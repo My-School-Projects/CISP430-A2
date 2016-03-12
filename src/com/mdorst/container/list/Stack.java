@@ -35,6 +35,7 @@ public class Stack<E> extends LinkedList<E> {
     public E pop() {
         E value = head.prev.data;
         head.prev.delete();
+        if (size > 0) size--;
         return value;
     }
 
