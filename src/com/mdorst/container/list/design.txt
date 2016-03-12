@@ -1,56 +1,73 @@
+LinkedList    ---   is a   --- java.util.Collection
+LinkedList    --- has many --- Node
+LinkedList    ---   uses   --- Iterator
+Iterator      ---   is a   --- java.util.Iterator
+Iterator      ---   has a  --- Node
+Queue         ---   is a   --- LinkedList
+Stack         ---   is a   --- LinkedList
+SortedList    ---   is a   --- LinkedList
+PriorityQueue ---   is a   --- SortedList
+
 E : Generic
 
 Node
+ + Node()
+ + Node(E)
+ + delete()
  + data : E
  + next : Node
  + prev : Node
- + hasNext() : Boolean
- + hasPrev() : Boolean
- + insertNext(Node)
- + insertPrev(Node)
- + delete()
- + Node()
- + Node(E)
 
 Iterator
- - node : Node
- - head : Node
- + next() : E
+ ~ Iterator(Node)
  + hasNext() : Boolean
+ + next() : E
  + remove()
-
-LinkedList is a Collection
-LinkedList uses Node
+ - head : Node
+ - node : Node
 
 LinkedList
- # head : Node
- # size : Integer
- + size() : Integer
- + isEmpty() : Boolean
- + contains(Object) : Boolean
- + containsAll(Collection) : Boolean
- + iterator() : Iterator
- + toArray() : Object[]
+ + LinkedList()
+ + LinkedList(LinkedList)
  + add(E) : Boolean
  + addAll(Collection) : Boolean
+ + clear()
+ + contains(Object) : Boolean
+ + containsAll(Collection) : Boolean
+ + isEmpty() : Boolean
+ + iterator() : Iterator
  + remove(Object) : Boolean
  + removeAll(Collection) : Boolean
  + retainAll(Collection) : Boolean
- + clear()
+ + size() : Integer
+ + toArray() : Object[]
+ + toArray(T[]) : T[]
  + toString() : String
+ # head : Node
+ # size : Integer
 
-Queue is a LinkedList
- + enqueue(E)
+Queue
+ + Queue()
+ + Queue(LinkedList)
  + dequeue() : E
+ + enqueue(E)
+ + front() : E
 
-Stack is a LinkedList
- + push(E)
+Stack
+ + Stack()
+ + Stack(LinkedList)
  + pop() : E
+ + push(E)
  + top() : E
 
-SortedList is a LinkedList
+SortedList
+ + SortedList()
+ + SortedList(LinkedList)
  + add(E) : Boolean
 
-PriorityQueue is a SortedList
- + enqueue(E)
+PriorityQueue
+ + PriorityQueue()
+ + PriorityQueue(LinkedList)
  + dequeue() : E
+ + enqueue(E)
+ + front() : E
