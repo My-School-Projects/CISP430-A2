@@ -1,7 +1,6 @@
 package com.mdorst;
 
-import com.mdorst.container.list.LinkedList;
-import com.mdorst.container.list.SortedList;
+import com.mdorst.container.list.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -82,7 +81,7 @@ public class Main {
             test.log("==================");
             test.log("SortedList<Double>");
             test.log("==================");
-            SortedList<Double> list = new SortedList<>();
+            Collection<Double> list = new SortedList<>();
             test.assertEqual(list.size(), 0, "size()");
             test.assertTrue(list.isEmpty(), "isEmpty()");
             test.assertFalse(list.contains(5), "contains(5)");
@@ -142,6 +141,134 @@ public class Main {
             test.assertEqual(iter.next(), 10.0, "next()");
             test.assertFalse(iter.hasNext(), "hasNext()");
             test.assertEqual(iter.next(), null, "next()");
+        }
+        {
+            class MagicBox {
+                private Object o;
+                MagicBox(Object o) {
+                    this.o = o;
+                }
+                public Object open() {
+                    return o;
+                }
+            }
+            test.log("===============");
+            test.log("Stack<MagicBox>");
+            test.log("===============");
+            Stack<MagicBox> stack;
+            {
+                Collection<MagicBox> c = new Stack<>();
+                stack = (Stack<MagicBox>) c;
+            }
+            test.assertEqual(stack.size(), 0, "size()");
+            test.assertTrue(stack.isEmpty(), "isEmpty()");
+            test.assertFalse(stack.contains(5), "contains(5)");
+            test.assertTrue(stack.containsAll(stack), "containsAll(self)");
+            test.assertFalse(stack.iterator().hasNext(), "iterator().hasNext()");
+            test.assertTrue(Arrays.deepEquals(stack.toArray(), new Object[] {}), "toArray()");
+            test.log("push(new MagicBox(5))");
+            stack.push(new MagicBox(5));
+            test.assertEqual(stack.top().open(), 5, "top().open()");
+            test.log("push(new MagicBox(\"hello\"))");
+            stack.push(new MagicBox("hello"));
+            test.assertEqual(stack.top().open(), "hello", "top().open()");
+            test.log("push(new MagicBox(new MagicBox(3.14))");
+            stack.push(new MagicBox(new MagicBox(3.14)));
+            test.assertEqual(((MagicBox)stack.top().open()).open(), 3.14, "top().open().open()");
+            test.assertEqual(((MagicBox)stack.pop().open()).open(), 3.14, "pop().open().open()");
+            test.assertEqual(stack.pop().open(), "hello", "pop().open()");
+            test.assertEqual(stack.pop().open(), 5, "pop().open()");
+            test.assertEqual(stack.pop(), null, "pop()");
+            test.assertEqual(stack.pop(), null, "pop()");
+            test.log("push(new MagicBox(23.5f))");
+            stack.push(new MagicBox(23.5f));
+            test.assertEqual(stack.pop().open(), 23.5f, "pop().open()");
+            test.assertEqual(stack.pop(), null, "pop()");
+        }
+        {
+            test.log("=============");
+            test.log("Queue<String>");
+            test.log("=============");
+            Queue<String> queue;
+            {
+                Collection<String> c = new Queue<>();
+                queue = (Queue<String>)c;
+            }
+            test.assertEqual(queue.size(), 0, "size()");
+            test.assertTrue(queue.isEmpty(), "isEmpty()");
+            test.assertFalse(queue.contains(5), "contains(5)");
+            test.assertTrue(queue.containsAll(queue), "containsAll(self)");
+            test.assertFalse(queue.iterator().hasNext(), "iterator().hasNext()");
+            test.assertTrue(Arrays.deepEquals(queue.toArray(), new Object[] {}), "toArray()");
+            test.log("enqueue(\"hello\")");
+            queue.enqueue("hello");
+            test.assertEqual(queue.front(), "hello", "front()");
+            test.log("enqueue(\"goodbye\")");
+            queue.enqueue("goodbye");
+            test.assertEqual(queue.front(), "hello", "front()");
+            test.log("enqueue(\"what's up?\")");
+            queue.enqueue("what's up?");
+            test.log("================");
+            test.log("Iterator<String>");
+            test.log("================");
+            Iterator<String> iter = queue.iterator();
+            test.assertTrue(iter.hasNext(), "hasNext()");
+            test.assertEqual(iter.next(), "hello", "next()");
+            test.assertTrue(iter.hasNext(), "hasNext()");
+            test.assertEqual(iter.next(), "goodbye", "next()");
+            test.assertTrue(iter.hasNext(), "hasNext()");
+            test.assertEqual(iter.next(), "what's up?", "next()");
+            test.assertFalse(iter.hasNext(), "hasNext()");
+            test.assertEqual(iter.next(), null, "next()");
+            test.assertEqual(queue.dequeue(), "hello", "dequeue()");
+            test.assertEqual(queue.dequeue(), "goodbye", "dequeue()");
+            test.assertEqual(queue.dequeue(), "what's up?", "dequeue()");
+            test.assertEqual(queue.dequeue(), null, "dequeue()");
+            test.assertEqual(queue.dequeue(), null, "dequeue()");
+            test.log("enqueue(\"just in case...\")");
+            queue.enqueue("just in case...");
+            test.assertEqual(queue.front(), "just in case...", "front()");
+            test.assertEqual(queue.dequeue(), "just in case...", "dequeue()");
+            test.assertEqual(queue.dequeue(), null, "dequeue()");
+        }
+        {
+            test.log("====================");
+            test.log("PriorityQueue<Float>");
+            test.log("====================");
+            PriorityQueue<Float> queue;
+            {
+                Collection<Float> c = new PriorityQueue<>();
+                queue = (PriorityQueue<Float>)c;
+            }
+            test.assertEqual(queue.size(), 0, "size()");
+            test.assertTrue(queue.isEmpty(), "isEmpty()");
+            test.assertFalse(queue.contains(5), "contains(5)");
+            test.assertTrue(queue.containsAll(queue), "containsAll(self)");
+            test.assertFalse(queue.iterator().hasNext(), "iterator().hasNext()");
+            test.assertTrue(Arrays.deepEquals(queue.toArray(), new Object[] {}), "toArray()");
+            test.log("enqueue(3f)");
+            queue.enqueue(3f);
+            test.assertEqual(queue.front(), 3f, "front()");
+            test.log("enqueue(5f)");
+            queue.enqueue(5f);
+            test.assertEqual(queue.front(), 3f, "front()");
+            test.log("enqueue(2f)");
+            queue.enqueue(2f);
+            test.assertEqual(queue.front(), 2f, "front()");
+            test.log("enqueue(4f)");
+            queue.enqueue(4f);
+            test.assertEqual(queue.front(), 2f, "front()");
+            test.log("enqueue(1f)");
+            queue.enqueue(1f);
+            test.assertEqual(queue.front(), 1f, "front()");
+            test.assertEqual(queue.dequeue(), 1f, "dequeue()");
+            test.assertEqual(queue.dequeue(), 2f, "dequeue()");
+            test.assertEqual(queue.dequeue(), 3f, "dequeue()");
+            test.assertEqual(queue.front(), 4f, "front()");
+            test.assertEqual(queue.dequeue(), 4f, "dequeue()");
+            test.assertEqual(queue.dequeue(), 5f, "dequeue()");
+            test.assertEqual(queue.front(), null, "front()");
+            test.assertEqual(queue.dequeue(), null, "dequeue()");
         }
         test.done();
     }
