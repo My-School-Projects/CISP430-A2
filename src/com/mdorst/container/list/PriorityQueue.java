@@ -1,6 +1,13 @@
 package com.mdorst.container.list;
 
 public class PriorityQueue<E extends Comparable<? super E>> extends SortedList<E> {
+
+    public PriorityQueue(LinkedList<E> other) {
+        super(other);
+    }
+
+    public PriorityQueue() {}
+
     public void enqueue(E e) {
         add(e);
     }

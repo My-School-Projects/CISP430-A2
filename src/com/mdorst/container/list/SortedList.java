@@ -1,6 +1,13 @@
 package com.mdorst.container.list;
 
 public class SortedList<E extends Comparable<? super E>> extends LinkedList<E> {
+
+    public SortedList(LinkedList<E> other) {
+        super(other);
+    }
+
+    public SortedList() {}
+
     @Override
     public boolean add(E e) {
         size++;
