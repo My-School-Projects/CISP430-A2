@@ -8,11 +8,9 @@ import java.util.Objects;
 /**
  * This class serves as a simple testing framework.
  * <p>
- * Calls to {@code assert*} are tracked, and expectations are stored
- * for a later call to {@code done()}, which print the number of passed and
- * failed tests. The expectations of the failed tests will be displayed in red.
- * If {@code verbose == true}, the expectations of the passed tests will be
- * displayed in green.
+ * Calls to {@code assert*} and {@code log} are tracked, and the
+ * associated messages are displayed on call to {@code done},
+ * depending on the verbosity settings.
  */
 public class TestRunner {
     private List<String> log;
@@ -20,9 +18,9 @@ public class TestRunner {
     private int passCount;
     private int failCount;
     /**
-     * If {@code false}, only expectations for failed tests will be
-     * displayed. If {@code true}, all expectations will be
-     * displayed.
+     * If {@code false}, only failed test expectations will be
+     * displayed. If {@code true}, all expectations and log messages
+     * will be displayed.
      * Default: {@code false}
      */
     public boolean verbose = false;
@@ -70,9 +68,13 @@ public class TestRunner {
         }
     }
 
+    public void log(String message) {
+        if (verbose) log.add(message);
+    }
+
     /**
      * Prints "n passed, n failed", and displays any failed test expectations.
-     * Displays passed test expectations if {@code verbose == true}
+     * Displays passed test expectations and log messages if {@code verbose == true}
      */
     public void done() {
         stream.println("\n" + Color.GREEN + passCount + " passed, " +
