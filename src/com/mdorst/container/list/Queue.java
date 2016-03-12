@@ -19,7 +19,7 @@ package com.mdorst.container.list;
 public class Queue<E extends Comparable<? super E>> extends LinkedList<E> {
 
     /**
-     * Adds an element at the front of the collection
+     * Adds an element to the back of the queue
      *
      * @param obj the element to be added
      */
@@ -28,7 +28,7 @@ public class Queue<E extends Comparable<? super E>> extends LinkedList<E> {
     }
 
     /**
-     * Removes an element from the back of the collection, returning it to the caller
+     * Removes an element from the front of the queue, returning it to the caller
      *
      * @return the removed element
      */
@@ -36,6 +36,15 @@ public class Queue<E extends Comparable<? super E>> extends LinkedList<E> {
         E value = head.next.data;
         head.next.delete();
         return value;
+    }
+
+    /**
+     * Shows the element at the front of the queue
+     *
+     * @return the element at the front of the queue
+     */
+    public E front() {
+        return head.next.data;
     }
 
     public Queue(LinkedList<E> other) {
