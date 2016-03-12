@@ -1,0 +1,56 @@
+E : Generic
+
+Node
+ + data : E
+ + next : Node
+ + prev : Node
+ + hasNext() : Boolean
+ + hasPrev() : Boolean
+ + insertNext(Node)
+ + insertPrev(Node)
+ + delete()
+ + Node()
+ + Node(E)
+
+Iterator
+ - node : Node
+ - head : Node
+ + next() : E
+ + hasNext() : Boolean
+ + remove()
+
+LinkedList is a Collection
+LinkedList uses Node
+
+LinkedList
+ # head : Node
+ # size : Integer
+ + size() : Integer
+ + isEmpty() : Boolean
+ + contains(Object) : Boolean
+ + containsAll(Collection) : Boolean
+ + iterator() : Iterator
+ + toArray() : Object[]
+ + add(E) : Boolean
+ + addAll(Collection) : Boolean
+ + remove(Object) : Boolean
+ + removeAll(Collection) : Boolean
+ + retainAll(Collection) : Boolean
+ + clear()
+ + toString() : String
+
+Queue is a LinkedList
+ + enqueue(E)
+ + dequeue() : E
+
+Stack is a LinkedList
+ + push(E)
+ + pop() : E
+ + top() : E
+
+SortedList is a LinkedList
+ + add(E) : Boolean
+
+PriorityQueue is a SortedList
+ + enqueue(E)
+ + dequeue() : E
