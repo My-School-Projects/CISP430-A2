@@ -78,7 +78,8 @@ public class TestRunner {
      */
     public void done() {
         stream.println("\n" + Color.GREEN + passCount + " passed, " +
-                Color.RED + failCount + " failed." + Color.RESET);
+                (failCount > 0 ? Color.RED : Color.GREEN) +
+                failCount + " failed." + Color.RESET);
         log.forEach(stream::println);
     }
 
