@@ -6,8 +6,12 @@ public class PriorityQueue<E extends Comparable<? super E>> extends SortedList<E
     }
 
     public E dequeue() {
-        Node<E> r = head.prev;
-        r.delete();
-        return r.data;
+        E value = head.next.data;
+        head.next.delete();
+        return value;
+    }
+
+    public E front() {
+        return head.next.data;
     }
 }
