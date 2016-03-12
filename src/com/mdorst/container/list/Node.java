@@ -1,18 +1,14 @@
 package com.mdorst.container.list;
 
 /*
- * T : Generic
+ * E : Generic
  *
  * Node
- * + data : T
+ * + data : E
  * + next : Node
  * + prev : Node
- * + swap(Node)
- * + hasNext() : Boolean
- * + hasPrev() : Boolean
- * + insertNext(Node)
- * + constructor()
- * + constructor(T)
+ * + Node()
+ * + Node(E)
  * + delete()
  */
 
@@ -29,60 +25,9 @@ class Node<E> {
     public Node<E> next;
     public Node<E> prev;
 
-    public boolean hasNext() {
-        return next != null;
-    }
-    public boolean hasPrev() {
-        return prev != null;
-    }
-
-    public void swap(Node<E> node) {
-        E temp = this.data;
-        this.data = node.data;
-        node.data = temp;
-    }
-
     public Node() {}
     public Node(E obj) {
         data = obj;
-    }
-
-    /**
-     * Inserts a new {@code Node} between this node and the node
-     * referenced by {@code next}
-     *
-     * @param node the node to be inserted
-     */
-    public void insertNext(Node<E> node) {
-        if (node == null) {
-            throw new NullPointerException();
-        }
-        Node<E> temp = this.next;
-        this.next = node;
-        node.next = temp;
-        node.prev = this;
-        if (temp != null) {
-            temp.prev = node;
-        }
-    }
-
-    /**
-     * Inserts a new {@code Node} between this node and the node
-     * referenced by {@code prev}
-     *
-     * @param node the node to be inserted
-     */
-    public void insertPrev(Node<E> node) {
-        if (node == null) {
-            throw new NullPointerException();
-        }
-        Node<E> temp = this.prev;
-        this.prev = node;
-        node.prev = temp;
-        node.next = this;
-        if (temp != null) {
-            temp.next = node;
-        }
     }
 
     /**
@@ -90,12 +35,7 @@ class Node<E> {
      * to reference each other, skipping over this one
      */
     public void delete() {
-        if (hasPrev()) {
-            prev.next = next;
-        }
-        if (hasNext()) {
-            next.prev = prev;
-        }
-        next = prev = null;
+        prev.next = next;
+        next.prev = prev;
     }
 }
