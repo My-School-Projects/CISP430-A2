@@ -12,11 +12,6 @@ public class Main {
     public static void main(String[] args) {
         TestRunner test = new TestRunner();
         test.verbose = true;
-        /**
-         * ==============
-         * LinkedList
-         * ==============
-         */
         {
             test.log("===================");
             test.log("LinkedList<Integer>");
@@ -83,11 +78,6 @@ public class Main {
             test.assertFalse(iter.hasNext(), "hasNext()");
             test.assertEqual(iter.next(), null, "next()");
         }
-        /**
-         * ==========
-         * SortedList
-         * ==========
-         */
         {
             test.log("==================");
             test.log("SortedList<Double>");
