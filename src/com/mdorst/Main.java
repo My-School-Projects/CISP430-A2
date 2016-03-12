@@ -11,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         TestRunner test = new TestRunner();
+        test.verbose = true;
         /**
          * ==============
          * LinkedList
