@@ -1,16 +1,5 @@
 package com.mdorst.container.list;
 
-/*
- * Stack is a BasicList
- *
- * T : Generic
- *
- * Stack
- * + push(T)
- * + pop() : T
- * + top() : T
- */
-
 /**
  * This class extends BasicList, and provides methods to support
  * a LIFO stack pattern.

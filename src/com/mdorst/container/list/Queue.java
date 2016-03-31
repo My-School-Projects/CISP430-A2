@@ -1,15 +1,5 @@
 package com.mdorst.container.list;
 
-/*
- * Queue is a SortableList
- *
- * T : Generic
- *
- * Queue
- * + enqueue(T)
- * + dequeue() : T
- */
-
 /**
  * This class extends SortableList, and provides methods to support
  * a FIFO queue pattern.
