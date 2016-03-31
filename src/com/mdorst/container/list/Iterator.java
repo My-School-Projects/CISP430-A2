@@ -1,21 +1,12 @@
 package com.mdorst.container.list;
 
-/*
- * Iterator
- * - node : Node
- *
- * + next() : T
- * + hasNext() : Boolean
- * # constructor(Node)
- */
-
 /**
  * This class extends java.util.Iterator, and provides facilities
  * for iterating over a linked list.
  *
  * @param <E>
  */
-public class Iterator<E> implements java.util.Iterator<E> {
+public class Iterator<E>  {
     private Node<E> node;
     private Node<E> head;
 
@@ -24,7 +15,6 @@ public class Iterator<E> implements java.util.Iterator<E> {
      *
      * @return the next element in the collection
      */
-    @Override
     public E next() {
         return hasNext() ? (node = node.next).data : null;
     }
@@ -35,7 +25,6 @@ public class Iterator<E> implements java.util.Iterator<E> {
      * @return {@code true} if the the iterator points to the end of the
      * collection, otherwise {@code false}
      */
-    @Override
     public boolean hasNext() {
         return node.next != head;
     }
@@ -43,7 +32,6 @@ public class Iterator<E> implements java.util.Iterator<E> {
     /**
      * Remove the last element returned by {@code next()} from the collection
      */
-    @Override
     public void remove() {
         node.delete();
     }
