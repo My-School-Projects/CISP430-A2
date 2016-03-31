@@ -1,8 +1,6 @@
 package com.mdorst.container.list;
 
-
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Objects;
 
 public class LinkedList<E> {
     protected Node<E> head;
@@ -37,21 +35,7 @@ public class LinkedList<E> {
         return false;
     }
 
-    /**
-     * Returns true if this collection contains all of the elements in the specified collection.
-     *
-     * @param c collection to be checked for containment in this collection
-     * @return {@code true} if this collection contains all of the elements in the specified collection
-     */
-    public boolean containsAll(Collection<?> c) {
-        for (Object o : c) {
-            if (!contains(o))
-                return false;
-        }
-        return true;
-    }
-
-    public java.util.Iterator<E> iterator() {
+    public Iterator<E> iterator() {
         return new Iterator<>(head);
     }
 
@@ -61,21 +45,6 @@ public class LinkedList<E> {
         for (Node<E> n = head.next; n != head; n = n.next)
             result[i++] = n.data;
         return result;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T> T[] toArray(T[] a) {
-        if (a.length < size) {
-            a = (T[]) Array.newInstance(a.getClass().getComponentType(), size);
-        }
-        int i = 0;
-        for (Node<E> n = head.next; n != head; n = n.next) {
-            a[i++] = (T) n.data;
-        }
-        if (a.length > size) {
-            a[size] = null;
-        }
-        return a;
     }
 
     /**
@@ -92,17 +61,6 @@ public class LinkedList<E> {
         n.next = head;
         size++;
         return true;
-    }
-
-    /**
-     * Appends all of the elements in the specified collection to the list
-     *
-     * @param c the collection to be appended
-     * @return {@code true} if {@code c} is non-empty
-     */
-    public boolean addAll(Collection<? extends E> c) {
-        for (E e : c) add(e);
-        return !c.isEmpty();
     }
 
     /**
@@ -125,55 +83,6 @@ public class LinkedList<E> {
             }
         }
         return false;
-    }
-
-    /**
-     * Removes all elements that are also contained in the specified collection.
-     * After this call returns, this collection will contain no elements
-     * in common with the specified collection.
-     *
-     * @param c collection containing elements to be removed from this collection
-     * @return {@code true} if this collection changed as a result of the call
-     */
-    public boolean removeAll(Collection<?> c) {
-        boolean changed = false;
-        for (Object o : c) {
-            for (Node<E> n = head.next; n != head; n = n.next) {
-                /**
-                 * If o == null, checks for null elements.
-                 * Otherwise, checks for o.equals(element)
-                 */
-                if (o == null ? n.data == null : o.equals(n.data)) {
-                    n.delete();
-                    changed = true;
-                }
-            }
-        }
-        return changed;
-    }
-
-    /**
-     * Retains only the elements that are contained in the specified collection.
-     * In other words, removes all elements that are not contained in the specified collection.
-     *
-     * @param c collection containing elements to be retained
-     * @return {@code true} if this collection changed as a result of the call
-     */
-    public boolean retainAll(Collection<?> c) {
-        boolean changed = false;
-        for (Node<E> n = head.next; n != head; n = n.next) {
-            boolean found = false;
-            for (Object o : c) {
-                if (o == null ? n.data == null : o.equals(n.data)) {
-                    found = true;
-                }
-            }
-            if (!found) {
-                n.delete();
-                changed = true;
-            }
-        }
-        return changed;
     }
 
     /**

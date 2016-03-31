@@ -2,10 +2,6 @@ package com.mdorst;
 
 import com.mdorst.container.list.*;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -20,7 +16,6 @@ public class Main {
             test.assertTrue(list.isEmpty(), "isEmpty()");
             test.assertFalse(list.contains(5), "contains(5)");
             test.assertFalse(list.iterator().hasNext(), "iterator().hasNext()");
-            test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[]{}), "(toArray() == new Object[]{}");
             test.log("add(5)");
             list.add(5);
             test.assertEqual(list.size(), 1, "size()");
@@ -37,7 +32,6 @@ public class Main {
             test.assertEqual(iter.next(), null, "next()");
             test.assertFalse(iter.hasNext(), "hasNext()");
             test.assertEqual(list.toArray().length, 1, "toArray().length");
-            test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[]{5}), "(toArray() == new Object[]{5})");
             test.log("add(2)");
             list.add(2);
             test.assertEqual(list.size(), 2, "size()");
@@ -50,7 +44,6 @@ public class Main {
             test.assertEqual(iter.next(), 2, "next()");
             test.assertFalse(iter.hasNext(), "hasNext()");
             test.assertEqual(list.toArray().length, 2, "toArray()");
-            test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[]{5, 2}), "(toArray() == new Object[]{5, 2})");
         }
         {
             test.log("==================");
@@ -61,7 +54,6 @@ public class Main {
             test.assertTrue(list.isEmpty(), "isEmpty()");
             test.assertFalse(list.contains(5), "contains(5)");
             test.assertFalse(list.iterator().hasNext(), "iterator().hasNext()");
-            test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[] {}), "toArray()");
             test.log("add(5.0)");
             list.add(5.0);
             test.assertEqual(list.size(), 1, "size()");
@@ -156,7 +148,6 @@ public class Main {
             test.assertTrue(stack.isEmpty(), "isEmpty()");
             test.assertFalse(stack.contains(5), "contains(5)");
             test.assertFalse(stack.iterator().hasNext(), "iterator().hasNext()");
-            test.assertTrue(Arrays.deepEquals(stack.toArray(), new Object[] {}), "toArray()");
             test.log("push(new MagicBox(5))");
             stack.push(new MagicBox(5));
             test.assertEqual(stack.top().open(), 5, "top().open()");
@@ -193,7 +184,6 @@ public class Main {
             test.assertTrue(queue.isEmpty(), "isEmpty()");
             test.assertFalse(queue.contains(5), "contains(5)");
             test.assertFalse(queue.iterator().hasNext(), "iterator().hasNext()");
-            test.assertTrue(Arrays.deepEquals(queue.toArray(), new Object[] {}), "toArray()");
             test.log("enqueue(\"hello\")");
             queue.enqueue("hello");
             test.assertEqual(queue.front(), "hello", "front()");
@@ -238,7 +228,6 @@ public class Main {
             test.assertTrue(queue.isEmpty(), "isEmpty()");
             test.assertFalse(queue.contains(5), "contains(5)");
             test.assertFalse(queue.iterator().hasNext(), "iterator().hasNext()");
-            test.assertTrue(Arrays.deepEquals(queue.toArray(), new Object[] {}), "toArray()");
             test.log("enqueue(3f)");
             queue.enqueue(3f);
             test.assertEqual(queue.front(), 3f, "front()");

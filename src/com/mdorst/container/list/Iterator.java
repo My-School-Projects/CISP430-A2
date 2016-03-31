@@ -15,7 +15,7 @@ package com.mdorst.container.list;
  *
  * @param <E>
  */
-class Iterator<E> implements java.util.Iterator<E> {
+public class Iterator<E> implements java.util.Iterator<E> {
     private Node<E> node;
     private Node<E> head;
 
