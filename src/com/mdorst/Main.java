@@ -10,16 +10,15 @@ public class Main {
 
     public static void main(String[] args) {
         TestRunner test = new TestRunner();
-        test.verbose = true;
+        test.verbose = false;
         {
             test.log("===================");
             test.log("LinkedList<Integer>");
             test.log("===================");
-            Collection<Integer> list = new LinkedList<>();
+            LinkedList<Integer> list = new LinkedList<>();
             test.assertEqual(list.size(), 0, "size()");
             test.assertTrue(list.isEmpty(), "isEmpty()");
             test.assertFalse(list.contains(5), "contains(5)");
-            test.assertTrue(list.containsAll(list), "containsAll(self)");
             test.assertFalse(list.iterator().hasNext(), "iterator().hasNext()");
             test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[]{}), "(toArray() == new Object[]{}");
             test.log("add(5)");
@@ -28,7 +27,6 @@ public class Main {
             test.assertFalse(list.isEmpty(), "isEmpty()");
             test.assertTrue(list.contains(5), "contains(5)");
             test.assertFalse(list.contains(2), "contains(2)");
-            test.assertTrue(list.containsAll(list), "containsAll(self)");
             test.assertTrue(list.iterator().hasNext(), "iterator().hasNext()");
             test.log("=================");
             test.log("Iterator<Integer>");
@@ -45,7 +43,6 @@ public class Main {
             test.assertEqual(list.size(), 2, "size()");
             test.assertTrue(list.contains(5), "contains(5)");
             test.assertTrue(list.contains(2), "contains(2)");
-            test.assertTrue(list.containsAll(list), "containsAll(self)");
             test.assertTrue(list.iterator().hasNext(), "iterator().hasNext()");
             test.log("Reset iterator");
             iter = list.iterator();
@@ -54,38 +51,15 @@ public class Main {
             test.assertFalse(iter.hasNext(), "hasNext()");
             test.assertEqual(list.toArray().length, 2, "toArray()");
             test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[]{5, 2}), "(toArray() == new Object[]{5, 2})");
-            test.log("addAll(11, 3, 115)");
-            {
-                LinkedList<Integer> list2 = new LinkedList<>();
-                list2.add(11);
-                list2.add(3);
-                list2.add(115);
-                list.addAll(list2);
-            }
-
-            test.assertTrue(list.contains(11), "contains(11)");
-            test.assertTrue(list.contains(3), "contains(3)");
-            test.assertTrue(list.contains(115), "contains(115)");
-            test.log("Reset iterator");
-            iter = list.iterator();
-            test.assertEqual(iter.next(), 5, "next()");
-            test.assertEqual(iter.next(), 2, "next()");
-            test.assertEqual(iter.next(), 11, "next()");
-            test.assertEqual(iter.next(), 3, "next()");
-            test.assertTrue(iter.hasNext(), "hasNext()");
-            test.assertEqual(iter.next(), 115, "next()");
-            test.assertFalse(iter.hasNext(), "hasNext()");
-            test.assertEqual(iter.next(), null, "next()");
         }
         {
             test.log("==================");
             test.log("SortedList<Double>");
             test.log("==================");
-            Collection<Double> list = new SortedList<>();
+            SortedList<Double> list = new SortedList<>();
             test.assertEqual(list.size(), 0, "size()");
             test.assertTrue(list.isEmpty(), "isEmpty()");
             test.assertFalse(list.contains(5), "contains(5)");
-            test.assertTrue(list.containsAll(list), "containsAll(self)");
             test.assertFalse(list.iterator().hasNext(), "iterator().hasNext()");
             test.assertTrue(Arrays.deepEquals(list.toArray(), new Object[] {}), "toArray()");
             test.log("add(5.0)");
@@ -94,7 +68,6 @@ public class Main {
             test.assertFalse(list.isEmpty(), "isEmpty()");
             test.assertTrue(list.contains(5.0), "contains(5)");
             test.assertFalse(list.contains(2.0), "contains(2)");
-            test.assertTrue(list.containsAll(list), "containsAll(self");
             test.assertTrue(list.iterator().hasNext(), "iterator().hasNext()");
             test.log("================");
             test.log("Iterator<Double>");
@@ -176,13 +149,12 @@ public class Main {
             test.log("===============");
             Stack<MagicBox> stack;
             {
-                Collection<MagicBox> c = new Stack<>();
+                Stack<MagicBox> c = new Stack<>();
                 stack = (Stack<MagicBox>) c;
             }
             test.assertEqual(stack.size(), 0, "size()");
             test.assertTrue(stack.isEmpty(), "isEmpty()");
             test.assertFalse(stack.contains(5), "contains(5)");
-            test.assertTrue(stack.containsAll(stack), "containsAll(self)");
             test.assertFalse(stack.iterator().hasNext(), "iterator().hasNext()");
             test.assertTrue(Arrays.deepEquals(stack.toArray(), new Object[] {}), "toArray()");
             test.log("push(new MagicBox(5))");
@@ -214,13 +186,12 @@ public class Main {
             test.log("=============");
             Queue<String> queue;
             {
-                Collection<String> c = new Queue<>();
+                Queue<String> c = new Queue<>();
                 queue = (Queue<String>)c;
             }
             test.assertEqual(queue.size(), 0, "size()");
             test.assertTrue(queue.isEmpty(), "isEmpty()");
             test.assertFalse(queue.contains(5), "contains(5)");
-            test.assertTrue(queue.containsAll(queue), "containsAll(self)");
             test.assertFalse(queue.iterator().hasNext(), "iterator().hasNext()");
             test.assertTrue(Arrays.deepEquals(queue.toArray(), new Object[] {}), "toArray()");
             test.log("enqueue(\"hello\")");
@@ -262,15 +233,10 @@ public class Main {
             test.log("====================");
             test.log("PriorityQueue<Float>");
             test.log("====================");
-            PriorityQueue<Float> queue;
-            {
-                Collection<Float> c = new PriorityQueue<>();
-                queue = (PriorityQueue<Float>)c;
-            }
+            PriorityQueue<Float> queue = new PriorityQueue<>();
             test.assertEqual(queue.size(), 0, "size()");
             test.assertTrue(queue.isEmpty(), "isEmpty()");
             test.assertFalse(queue.contains(5), "contains(5)");
-            test.assertTrue(queue.containsAll(queue), "containsAll(self)");
             test.assertFalse(queue.iterator().hasNext(), "iterator().hasNext()");
             test.assertTrue(Arrays.deepEquals(queue.toArray(), new Object[] {}), "toArray()");
             test.log("enqueue(3f)");
