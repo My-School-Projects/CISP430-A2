@@ -1,7 +1,5 @@
-LinkedList    ---   is a   --- java.util.Collection
 LinkedList    --- has many --- Node
 LinkedList    ---   uses   --- Iterator
-Iterator      ---   is a   --- java.util.Iterator
 Iterator      ---   has a  --- Node
 Queue         ---   is a   --- LinkedList
 Stack         ---   is a   --- LinkedList
@@ -30,18 +28,12 @@ LinkedList
  + LinkedList()
  + LinkedList(LinkedList)
  + add(E) : Boolean
- + addAll(Collection) : Boolean
  + clear()
  + contains(Object) : Boolean
- + containsAll(Collection) : Boolean
  + isEmpty() : Boolean
  + iterator() : Iterator
  + remove(Object) : Boolean
- + removeAll(Collection) : Boolean
- + retainAll(Collection) : Boolean
  + size() : Integer
- + toArray() : Object[]
- + toArray(T[]) : T[]
  + toString() : String
  # head : Node
  # size : Integer
