@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         TestRunner test = new TestRunner();
-        test.verbose = false;
+        test.verbose = true;
         {
             test.log("===================");
             test.log("LinkedList<Integer>");
@@ -137,11 +137,7 @@ public class Main {
             test.log("===============");
             test.log("Stack<MagicBox>");
             test.log("===============");
-            Stack<MagicBox> stack;
-            {
-                Stack<MagicBox> c = new Stack<>();
-                stack = (Stack<MagicBox>) c;
-            }
+            Stack<MagicBox> stack = new Stack<>();
             test.assertEqual(stack.size(), 0, "size()");
             test.assertTrue(stack.isEmpty(), "isEmpty()");
             test.assertFalse(stack.contains(5), "contains(5)");
@@ -173,11 +169,7 @@ public class Main {
             test.log("=============");
             test.log("Queue<String>");
             test.log("=============");
-            Queue<String> queue;
-            {
-                Queue<String> c = new Queue<>();
-                queue = (Queue<String>)c;
-            }
+            Queue<String> queue = new Queue<>();
             test.assertEqual(queue.size(), 0, "size()");
             test.assertTrue(queue.isEmpty(), "isEmpty()");
             test.assertFalse(queue.contains(5), "contains(5)");
