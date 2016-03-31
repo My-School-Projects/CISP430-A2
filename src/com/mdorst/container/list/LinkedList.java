@@ -26,6 +26,34 @@ public class LinkedList<E> {
         return size == 0;
     }
 
+    /**
+     * WARNING: This method CANNOT guarantee that the next call to {@code add()} will
+     * not fail! While there may be memory available at the time of this call, there is no
+     * guarantee that there will still be memory available at the time of any subsequent
+     * call to {@code add()}.
+     *
+     * This method is NOT recommended for use. The appropriate way to handle lack of memory
+     * is to catch {@code OutOfMemoryError}s upon calls to {@code add()}.
+     * eg.
+     * <code>
+     *     try {
+     *         linkedList.add(someObject);
+     *     } catch (OutOfMemoryError e) {
+     *         // handle error
+     *     }
+     * </code>
+     *
+     * @return false unless there is no more memory available at the time of this call.
+     */
+    public boolean isFull() {
+        try {
+            new Node<E>();
+        } catch (OutOfMemoryError e) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean contains(Object o) {
         for (Node<E> n = head.next; n != head; n = n.next) {
             if (Objects.equals(o, n.data)) {
