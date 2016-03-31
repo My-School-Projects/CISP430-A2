@@ -31,7 +31,6 @@ public class Main {
             test.assertEqual(iter.next(), 5, "next()");
             test.assertEqual(iter.next(), null, "next()");
             test.assertFalse(iter.hasNext(), "hasNext()");
-            test.assertEqual(list.toArray().length, 1, "toArray().length");
             test.log("add(2)");
             list.add(2);
             test.assertEqual(list.size(), 2, "size()");
@@ -43,7 +42,6 @@ public class Main {
             test.assertEqual(iter.next(), 5, "next()");
             test.assertEqual(iter.next(), 2, "next()");
             test.assertFalse(iter.hasNext(), "hasNext()");
-            test.assertEqual(list.toArray().length, 2, "toArray()");
         }
         {
             test.log("==================");

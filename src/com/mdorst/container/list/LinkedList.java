@@ -39,14 +39,6 @@ public class LinkedList<E> {
         return new Iterator<>(head);
     }
 
-    public Object[] toArray() {
-        Object[] result = new Object[size];
-        int i = 0;
-        for (Node<E> n = head.next; n != head; n = n.next)
-            result[i++] = n.data;
-        return result;
-    }
-
     /**
      * Appends the specified element to the end of the list
      *
