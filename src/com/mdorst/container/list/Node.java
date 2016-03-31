@@ -1,17 +1,5 @@
 package com.mdorst.container.list;
 
-/*
- * E : Generic
- *
- * Node
- * + data : E
- * + next : Node
- * + prev : Node
- * + Node()
- * + Node(E)
- * + delete()
- */
-
 /**
  * This class provides the facility to implement a linked list.
  * <p>
