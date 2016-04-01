@@ -2,7 +2,7 @@ package com.mdorst.container.list;
 
 import java.util.Objects;
 
-public class LinkedList<E> {
+public class LinkedList<E> implements Iterable<E> {
     protected Node<E> head;
     protected int size;
 
@@ -63,6 +63,7 @@ public class LinkedList<E> {
         return false;
     }
 
+    @Override
     public Iterator<E> iterator() {
         return new Iterator<>(head);
     }
